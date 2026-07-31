@@ -26,6 +26,6 @@ halfmarble is not a startup; it is a patient-led R&D fight. The science is the e
 
 To ensure the underlying science continues to advance, we legally pledge a flat percentage of our software net profits to the institutions driving the vanguard of research:
 *   **2.5%** to the Michael J. Fox Foundation (MJFF)
-*   **2.5%** to the Public Health Collaboration (PHC UK)
+*   **2.5%** to the [Public Health Collaboration](https://phcuk.org/) (PHC)
 
 *For live prototypes and full clinical documentation, visit [halfmarble.com](https://halfmarble.com).*
