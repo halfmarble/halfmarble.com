@@ -210,11 +210,19 @@
            BUTTON PRESS on the control pills, so the loop teaches the controls
            while it plays. Two shapes per lap: empty reactor, THE CHECKER (3/6)
            built and fused, then THE BEAM (4/6) built and fused, sweep to empty.
-           RE-CUT 2026-08-03 against build 956 (the three-track landing and the
-           CHALLENGE work made the 07-30 cut stale): SF_AUTODEMO capture on the
-           iPhone 17 Pro simulator (1206x2622; source 44.0s-74.5s, 30.5s,
-           540x1174, 0.95 MB). Note `setpts=PTS-STARTPTS` before the fades —
-           without it the seek leaves frame 0 at YMAX 56 instead of pure black.
+           RE-CUT 2026-08-03 against build 1014, on the deep-field background
+           and with BRIGHT COLORS ON: SF_AUTODEMO capture on the iPhone 17 Pro
+           simulator (1206x2622; source 68.0s-103.0s, 35s, 540x1174, 0.46 MB).
+           TWO capture rules, both learned the hard way:
+           (1) BRIGHT COLORS must be ON — `mutedPalette` defaults to TRUE when
+           its key is absent, so a fresh install captures the MUTED palette.
+           Set it before launching:
+             defaults write "$(xcrun simctl get_app_container <UDID> \
+               com.halfmarble.StringFusor data)/Library/Preferences/\
+               com.halfmarble.StringFusor.plist" \
+               stringfusor.mutedPalette.v2 -bool NO
+           (2) `setpts=PTS-STARTPTS` before the fades — without it the seek
+           leaves frame 0 at YMAX 56 instead of pure black, and the wrap flashes.
            Self-hosted beside the screenshots — no YouTube, no Google request, so
            the page stays trackerless.
            The clip fades in from black and out to black (0.6s each; the fade-out
