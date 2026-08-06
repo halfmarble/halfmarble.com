@@ -208,21 +208,62 @@
            2026-07-30 — replaced the plain exam-drill cut): the demo runs the
            orientation ladder with the bot at the controls, and it PAINTS EACH
            BUTTON PRESS on the control pills, so the loop teaches the controls
-           while it plays. Two shapes per lap: empty reactor, THE CHECKER (3/6)
-           built and fused, then THE BEAM (4/6) built and fused, sweep to empty.
-           RE-CUT 2026-08-03 against build 1014, on the deep-field background
-           and with BRIGHT COLORS ON: SF_AUTODEMO capture on the iPhone 17 Pro
-           simulator (1206x2622; source 68.0s-103.0s, 35s, 540x1174, 0.46 MB).
-           TWO capture rules, both learned the hard way:
-           (1) BRIGHT COLORS must be ON — `mutedPalette` defaults to TRUE when
-           its key is absent, so a fresh install captures the MUTED palette.
-           Set it before launching:
-             defaults write "$(xcrun simctl get_app_container <UDID> \
-               com.halfmarble.StringFusor data)/Library/Preferences/\
-               com.halfmarble.StringFusor.plist" \
+           while it plays. One lap: an empty reactor, THE ZIGZAG built and fired,
+           THE PILLAR built, and a CHAIN x2 sweeping the board clean. Both ends
+           sit on a near-empty board, so the loop wraps almost invisibly.
+           RE-CUT 2026-08-06 against build 1177: a DEVICE screen recording
+           (gerard's iPhone, 1320x2868 HEVC 60fps) — source 2.6s-37.5s, 540x1174,
+           30fps, crf 28, 0.96 MB. Poster is the clip's own frame at 23.6s.
+           RECORD IT ON DEVICE, NOT IN THE SIMULATOR. The simulator's capture is
+           what sank three attempts on 2026-08-06: the app runs at full speed
+           there (46-58 fps by its own HUD, and the game advances at the same
+           rate with or without `simctl io recordVideo` attached) but the RECORDED
+           stream carries only ~13 distinct frames a second, so animation lands as
+           a slideshow. Measured on the same board-area metric
+           (`fps=10,crop=...,tblend=all_mode=difference,signalstats` → YAVG per
+           second, count seconds under 1.0), the device take has ZERO dead seconds
+           in 37; the best simulator cut had 4 in 32, and the clip this replaced
+           (build 1014) had 13 in 35. Two other simulator traps, for the record: a
+           cut starting 8s after launch caught the board still MOUNTING (a card
+           and a watermark over empty space — reads as a broken file), and a cut
+           starting right after a fusion opened on smoke the viewer never saw.
+           TWO EDITS the device recording needs (a Debug build; Release has no
+           strip, and then only the trim applies):
+           (1) The perf HUD (RAM/CPU/FPS/BUILD) is burned into the top ~90px. The
+           header background behind it is a flat, unchanging rgb(9,12,18) full
+           width, so paint it out — but do it AFTER the range conversion. Apple
+           screen recordings are FULL range (yuvj420p); `drawbox` assumes limited,
+           so a fill drawn pre-conversion seams visibly, and cloning a clean band
+           from below drags score pops up with it (they fly through y100-212 on
+           their way to the energy readout). Post-scale `drawbox` with
+           color=0x0A0B11 lands exactly on the background's decoded (8,10,16).
+           (2) Trim the first 2.6s: the recording opens on the landing screen and
+           the tap that starts the DEMO.
+           The encode, whatever the source:
+             ffmpeg -ss <in> -t <len> -i REC.mov -an -vf "setpts=PTS-STARTPTS,\
+               fps=30,scale=540:1174:flags=lanczos:in_range=pc:out_range=tv,\
+               drawbox=x=0:y=0:w=540:h=46:color=0x0A0B11@1:t=fill,\
+               fade=t=in:st=0:d=0.6,fade=t=out:st=<len-0.7>:d=0.6,format=yuv420p" \
+               -c:v libx264 -preset veryslow -crf 28 -profile:v main \
+               -movflags +faststart loop-demo-orientation.mp4
+           `setpts=PTS-STARTPTS` is load-bearing: without it the seek leaves frame
+           0 at YMAX 56 instead of pure black and the wrap flashes. Verify BOTH
+           ends with ffprobe signalstats — YMAX must read 16. `-an` matters too:
+           a screen recording carries an audio track and this player is muted, but
+           the bytes still ship.
+           Frame spec: the device frame is aspect-ratio 1206/2622 with object-fit
+           cover, so any current iPhone recording fits with no visible crop (16/17
+           Pro is exact; Pro Max is 0.4602 against 0.4600).
+           If you ever DO capture in the simulator: bright colors must be forced on
+           (`mutedPalette` defaults to TRUE when its key is absent, so a fresh
+           install records the MUTED palette) and the perf strip off — and seed
+           both THROUGH the sim, never by writing the container plist from the
+           host, because the sim's own cfprefsd flushes its copy over yours at
+           shutdown and the write silently vanishes:
+             xcrun simctl spawn <UDID> defaults write com.halfmarble.StringFusor \
                stringfusor.mutedPalette.v2 -bool NO
-           (2) `setpts=PTS-STARTPTS` before the fades — without it the seek
-           leaves frame 0 at YMAX 56 instead of pure black, and the wrap flashes.
+             (likewise fpsGraph.enabled, and stringfusor.starryNight.v1 -bool NO,
+              or ten idle seconds fade the whole UI away mid-take)
            Self-hosted beside the screenshots — no YouTube, no Google request, so
            the page stays trackerless.
            The clip fades in from black and out to black (0.6s each; the fade-out
@@ -236,7 +277,7 @@
             <video class="loop-vid" autoplay muted loop playsinline preload="metadata"
                    poster="media/loop-demo-orientation-poster.jpg"
                    src="media/loop-demo-orientation.mp4"
-                   aria-label="StringFusor's built-in demo: the checker and beam patterns are built on an empty board to match their target cards, each control button lighting up as it is pressed, and each fusion sweeps the board clear — playing silently on a loop"></video>
+                   aria-label="StringFusor's built-in demo: strings land on an empty reactor to match the target card, each control button lighting up as it is pressed, the zigzag pattern fuses and its energy flies to the tally, and a chained pillar sweeps the board clean — playing silently on a loop"></video>
           </div>
         </div>
         <figcaption class="shot-cap">The built-in demo <span class="accent">·</span> every press shown <span class="accent">·</span> silent loop</figcaption>
