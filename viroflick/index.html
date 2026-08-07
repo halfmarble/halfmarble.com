@@ -104,12 +104,31 @@
 
   /* portrait frame for the silent gameplay loop. The clip is a real 1320 x 2868
      capture scaled to 540 wide, so it reuses the phone frame the screenshots use
-     (see .device .screen > video above) — just larger than a strip tile. */
+     (see .device .screen > video above) — just larger than a strip tile.
+     It needs its own aspect-ratio, though: the loop is cut from a device capture
+     whose top dev strip and bottom home indicator were cropped off, leaving
+     540 x 1138 rather than the screenshots' 1320 x 2868. Without this the shared
+     .device rule would letterbox-crop it under object-fit: cover and shave the
+     outer ammo wheels off both edges. Re-measure if the clip is ever re-cut. */
+  .loop-frame .screen { aspect-ratio: 540 / 1138; }
   /* the cap goes on the figure, not the frame: as a centred flex item the figure
      shrink-wraps its caption (~195px), and the frame's own max-width never binds —
      which sizes the hero to a strip tile instead of leading the section. */
   .loop-fig { margin: 0; width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center; }
   .loop-frame { width: 100%; }
+
+  /* the loop and the run it was cut from, side by side. The flex-basis (not
+     .loop-fig's own width:100%) is what sizes them here.
+     Measured behaviour: the pair sits on one line while the row can hold
+     2 x 300px + the 26px gap (~626px), and STACKS below that — it does not shrink
+     to stay side by side. That is flexbox working as specified, not a bug: line
+     breaking is resolved from the hypothetical main size (the basis) BEFORE
+     flex-shrink is applied, so a basis that doesn't fit wraps rather than shrinks.
+     The stack is the wanted outcome on a phone anyway — two 158px-wide frames would
+     make the end card's stat rows unreadable. Lowering the basis (e.g. flex: 1 1 200px)
+     would keep them side by side and shrinking, if that is ever preferred. */
+  .loop-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 26px; width: 100%; }
+  .loop-row > .loop-fig { flex: 0 1 300px; }
 
   /* placeholder shown until the real media lands */
   .ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 18px;
@@ -280,28 +299,51 @@
       </div>
       -->
 
-      <!-- Silent gameplay loop: the Triage case, surge 10, cut from a 1320x2868
-           simulator capture (re-shot 2026-08-06 from build 1853; source 2.0s-18.1s,
-           16.1s, 540x1174, 30fps, 1.8 MB). Self-hosted beside the screenshots — no
-           YouTube, no Google request, so the page stays trackerless. Silent by
-           design, which also sidesteps the audio defect that shelved the narrated
-           tour.
+      <!-- Silent gameplay loop: the Triage case, surge 36, cut from a 1320x2868
+           device capture (2026-08-06, build b1846 — the personal-best run that ended
+           FLATLINE 364756 at surge 38; source 480.0s-496.1s, 16.1s, 540x1138, 30fps,
+           1.8 MB). Self-hosted beside the screenshots — no YouTube, no Google request,
+           so the page stays trackerless. Silent by design, which also sidesteps the
+           audio defect that shelved the narrated tour.
+           Two bits of chrome are cropped out of this one because it came off a real
+           phone rather than the simulator: the dev overlay along the top (30 FPS /
+           204 MB / b1846, which ends at y=37 — the game HUD only starts at y=124) and
+           the iOS home indicator at the bottom (y=2829-2845). The crop is
+           1320x2784+0+44, which clears both and still keeps the whole VITALS bar
+           (its text ends at y=2824). That crop is why .loop-frame .screen carries its
+           own aspect-ratio — see the CSS note above.
            The clip fades in from black and out to black (0.5s each). That is load-
            bearing, not decoration: the loop wraps mid-run, so the HUD score and the
            four ammo wheels reset every 16s, and the fades hide that under black. Don't
            trim the fades off — a straight cut pops, and a tail-over-head crossfade
            ghosts the HUD digits (both variants are in media/videos/, gitignored). -->
-      <figure class="loop-fig">
-        <div class="device loop-frame">
-          <div class="screen">
-            <video class="loop-vid" autoplay muted loop playsinline preload="metadata"
-                   poster="media/loop-triage-surge10-poster.jpg"
-                   src="media/loop-triage-surge10.mp4"
-                   aria-label="ViroFlick gameplay: the Triage case at surge 10, playing silently on a loop"></video>
+      <div class="loop-row">
+        <figure class="loop-fig">
+          <div class="device loop-frame">
+            <div class="screen">
+              <video class="loop-vid" autoplay muted loop playsinline preload="metadata"
+                     poster="media/loop-triage-surge36-poster.jpg"
+                     src="media/loop-triage-surge36.mp4"
+                     aria-label="ViroFlick gameplay: the Triage case at surge 36, playing silently on a loop"></video>
+            </div>
           </div>
-        </div>
-        <figcaption class="shot-cap">Triage <span class="accent">·</span> surge 10 <span class="accent">·</span> silent loop</figcaption>
-      </figure>
+          <figcaption class="shot-cap">Triage <span class="accent">·</span> surge 36 <span class="accent">·</span> silent loop</figcaption>
+        </figure>
+
+        <!-- the end card from that same run, source t=630 (the card settles at t=627
+             and Control Center intrudes from t=635.5 — stay inside that window). Same
+             1320x2784+0+44 chrome crop as the loop, so it reuses .loop-frame's
+             aspect-ratio unchanged. -->
+        <figure class="loop-fig">
+          <div class="device loop-frame">
+            <div class="screen">
+              <img src="media/screen-flatline.jpg" loading="lazy" onerror="this.style.display='none'"
+                   alt="ViroFlick end-of-run results: FLATLINE, score 364756, a new best — surge 38 reached, 2182 neutralized, 25:43 survived, 100% accuracy, best flawless run 14 surges">
+            </div>
+          </div>
+          <figcaption class="shot-cap">Personal best <span class="accent">·</span> 364,756 <span class="accent">·</span> surge 38</figcaption>
+        </figure>
+      </div>
       <script>
         /* Motion is opt-out: this is a PD-facing page, so a reader who asks their OS
            for reduced motion gets the still poster instead of the loop. Runs inline
