@@ -211,9 +211,23 @@
            while it plays. One lap: an empty reactor, THE ZIGZAG built and fired,
            THE PILLAR built, and a CHAIN x2 sweeping the board clean. Both ends
            sit on a near-empty board, so the loop wraps almost invisibly.
-           RE-CUT 2026-08-06 against build 1177: a DEVICE screen recording
-           (gerard's iPhone, 1320x2868 HEVC 60fps) — source 2.6s-37.5s, 540x1174,
-           30fps, crf 28, 0.96 MB. Poster is the clip's own frame at 23.6s.
+           RE-CUT 2026-08-18 against build 1426, because the 2026-08-06 clip had
+           gone stale in the way that matters: it showed the orientation as it was
+           before the 08-15/16 rebuild, on the old console. A DEVICE screen
+           recording (gerard's iPhone, 1320x2868 HEVC 60fps, FULL range) — source
+           17.0s-50.0s, 33.0s, 540x1174, 30fps, crf 28, 0.97 MB. Poster is the
+           clip's own frame at 23.6s. NO drawbox this time: the take carries no
+           perf strip, so only the trim applied (see the Debug/Release note below).
+           The lap is the same shape as its predecessor's — a near-empty reactor at
+           THE ZIGZAG, then THE PILLAR, THE CHECKER, and a CHAIN x2 sweeping the
+           board clean at clip-time 30s, ending near-empty so the wrap hides.
+           TRIM-IN IS 17.0 FOR A REASON: Game Center lays two banners over the
+           opening ("Signed in as halfmarble", then "Leaderboards - Get started:
+           Daily Energy"), and the second is still up at t16.
+           Measured, since this is the whole reason the clip is shot on a phone:
+           988 of 990 frames distinct (29.9 distinct fps by mpdecimate) against
+           29.5 for the clip it replaced — a simulator take reads ~13.
+           (The 2026-08-06 cut this replaced: build 1177, source 2.6s-37.5s, 0.96 MB.)
            RECORD IT ON DEVICE, NOT IN THE SIMULATOR. The simulator's capture is
            what sank three attempts on 2026-08-06: the app runs at full speed
            there (46-58 fps by its own HUD, and the game advances at the same
