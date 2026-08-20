@@ -38,6 +38,15 @@
   .hero .label .accent { color: #eab308; }
   .hero h1 { font-size: 42px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 18px; }
   .hero p.sub { font-size: 17px; color: #9aa0a6; max-width: 620px; margin: 0 auto; }
+  .hero-check { display: inline-block; margin-top: 24px; font-family: 'JetBrains Mono', monospace;
+                font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9aa0a6;
+                text-decoration: none; border: 1px solid #2a2a30; border-radius: 8px;
+                padding: 12px 20px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .hero-check:hover { border-color: #4a4a52; color: #d1d5db; background: #131316; }
+  .hero-check:focus-visible { outline: 2px solid #75db5c; outline-offset: 2px; }
+  .hero-check .arr { color: #75db5c; }
+  /* honour a reduced-motion preference rather than always animating the jump */
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
   /* app cards */
   .apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 48px 0 0; }
@@ -62,7 +71,7 @@
   .stance b { color: #cbd0d5; font-weight: 600; }
 
   /* will-it-run checker */
-  .check { margin: 56px 0 0; background: #0d0d10; border: 1px solid #1f1f23; border-radius: 14px; padding: 30px 24px 26px; }
+  .check { scroll-margin-top: 24px; margin: 56px 0 0; background: #0d0d10; border: 1px solid #1f1f23; border-radius: 14px; padding: 30px 24px 26px; }
   .check .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #7d838a; margin-bottom: 12px; }
   .check h2 { font-size: 23px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1.25; }
   .check .lede { font-size: 14px; color: #8a9096; margin-top: 9px; max-width: 620px; }
@@ -127,6 +136,7 @@
     <div class="label">halfmarble <span class="accent">//</span> iOS apps</div>
     <h1>halfmarble on your iPhone.</h1>
     <p class="sub">One wellness app and two games. Everything runs on your device, none of it tracks you, and all of it is built to work with unsteady hands.</p>
+    <a class="hero-check" href="#compat">Not sure your device can run these? Check first <span class="arr">&darr;</span></a>
   </header>
 
   <section class="apps">
