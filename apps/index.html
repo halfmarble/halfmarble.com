@@ -52,12 +52,50 @@
   .status .chip { display: inline-block; padding: 3px 8px; border-radius: 5px; margin: 0 6px 6px 0; }
   .chip.now { color: #75db5c; border: 1px solid rgba(117,219,92,0.4); }
   .chip.soon { color: #cbb48c; border: 1px solid #2a2a30; }
+  .app .needs { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: #6d737a; margin: -6px 0 18px; line-height: 1.6; }
+  .app .needs b { color: #8a9096; font-weight: 500; }
   .app .cta { display: block; margin-top: auto; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #d1d5db; text-decoration: none; border: 1px solid #333; border-radius: 8px; padding: 12px 16px; transition: border-color 0.2s, background 0.2s; }
   .app .cta:hover { border-color: #555; background: #16161a; }
 
   /* the shared stance, one line */
   .stance { max-width: 620px; margin: 44px auto 0; text-align: center; font-size: 13.5px; color: #7d838a; }
   .stance b { color: #cbd0d5; font-weight: 600; }
+
+  /* will-it-run checker */
+  .check { margin: 56px 0 0; background: #0d0d10; border: 1px solid #1f1f23; border-radius: 14px; padding: 30px 24px 26px; }
+  .check .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: #7d838a; margin-bottom: 12px; }
+  .check h2 { font-size: 23px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1.25; }
+  .check .lede { font-size: 14px; color: #8a9096; margin-top: 9px; max-width: 620px; }
+  .check .lede a { color: #9aa0a6; text-decoration: underline; text-underline-offset: 3px; }
+
+  .check-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 26px; }
+  .field label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #7d838a; margin-bottom: 9px; }
+  .sel { position: relative; }
+  .sel::after { content: ""; position: absolute; right: 16px; top: 50%; width: 8px; height: 8px; margin-top: -6px; border-right: 2px solid #7d838a; border-bottom: 2px solid #7d838a; transform: rotate(45deg); pointer-events: none; }
+  .sel select {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    background: #16161a; color: #e3e6e9; border: 1px solid #2a2a30; border-radius: 9px;
+    font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.3;
+    padding: 14px 42px 14px 15px; cursor: pointer;
+  }
+  .sel select:hover { border-color: #3f3f47; }
+  .sel select:focus-visible { outline: 2px solid #75db5c; outline-offset: 2px; }
+
+  .results { margin-top: 26px; border-top: 1px solid #1c1c20; }
+  .result { display: flex; align-items: flex-start; gap: 15px; padding: 18px 2px; border-bottom: 1px solid #1c1c20; }
+  .result > img { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(255,255,255,0.06); }
+  .r-main { flex: 1; min-width: 0; }
+  .r-main h3 { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .r-req { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: #6d737a; margin-top: 4px; }
+  .r-msg { font-size: 14px; color: #9aa0a6; line-height: 1.55; margin-top: 7px; }
+  .r-msg a { color: #cbd0d5; text-decoration: underline; text-underline-offset: 3px; }
+  .r-mark { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; line-height: 1; border: 1px solid #2a2a30; color: #55595e; }
+  .result.is-yes .r-mark { color: #75db5c; border-color: rgba(117,219,92,0.45); background: rgba(117,219,92,0.09); }
+  .result.is-no  .r-mark { color: #f2616d; border-color: rgba(242,97,109,0.45); background: rgba(242,97,109,0.09); }
+  .result.is-upd .r-mark { color: #ffa126; border-color: rgba(255,161,38,0.45); background: rgba(255,161,38,0.09); }
+  .result.is-yes .r-msg { color: #b6bcc2; }
+
+  .check .hint { font-size: 12.5px; color: #6d737a; margin-top: 16px; }
 
   footer { padding: 60px 0; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 64px; }
   .footer-label { font-size: 11px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 10px; }
@@ -100,9 +138,10 @@
       </div>
       <p>Your heart rate, read aloud. SteadyHeartBeat speaks your live heart rate from AirPods Pro 3 — no watch, no chest strap, no glancing at a screen. Everything runs on your iPhone, and your data never leaves it.</p>
       <div class="status">
-        <span class="chip now">Free public beta &middot; on request</span>
+        <span class="chip now">Open beta &middot; TestFlight</span>
         <span class="chip soon">App Store release to follow</span>
       </div>
+      <p class="needs">Needs <b>iPhone &middot; iOS 26+ &middot; AirPods Pro 3 or later</b></p>
       <a class="cta" href="../steadyheartbeat/">See the app &rarr;</a>
     </div>
 
@@ -116,6 +155,7 @@
         <span class="chip now">Open beta &middot; TestFlight</span>
         <span class="chip soon">App Store release to follow</span>
       </div>
+      <p class="needs">Needs <b>iPhone or iPad &middot; iOS 17+</b></p>
       <a class="cta" href="../viroflick/">See the game &rarr;</a>
     </div>
 
@@ -129,9 +169,106 @@
         <span class="chip now">Open beta &middot; TestFlight</span>
         <span class="chip soon">App Store release to follow</span>
       </div>
+      <p class="needs">Needs <b>iPhone or iPad &middot; iOS 18.6+</b></p>
       <a class="cta" href="../stringfusor/">See the game &rarr;</a>
     </div>
 
+  </section>
+
+  <section class="check" id="compat">
+    <div class="eyebrow">Before you download</div>
+    <h2>Will these run on your device?</h2>
+    <p class="lede">Pick your device and the iOS version you are on. Nothing is sent anywhere &mdash; this runs entirely in your browser. Not sure which iOS you have? It is in <b>Settings &rsaquo; General &rsaquo; About &rsaquo; Software Version</b>.</p>
+
+    <div class="check-form">
+      <div class="field">
+        <label for="hmDevice">Your device</label>
+        <div class="sel">
+          <select id="hmDevice">
+            <option value="" selected>Choose a device&hellip;</option>
+            <optgroup label="iPhone">
+              <option value="phone:26">iPhone 17 &middot; Air &middot; 17e</option>
+              <option value="phone:26">iPhone 16 &middot; 16e</option>
+              <option value="phone:26">iPhone 15</option>
+              <option value="phone:26">iPhone 14</option>
+              <option value="phone:26">iPhone 13</option>
+              <option value="phone:26">iPhone 12</option>
+              <option value="phone:26">iPhone 11</option>
+              <option value="phone:26">iPhone SE &middot; 2nd or 3rd gen</option>
+              <option value="phone:18.6">iPhone XR &middot; XS &middot; XS Max</option>
+              <option value="phone:0">iPhone X &middot; 8 &middot; SE 1st gen &middot; older</option>
+            </optgroup>
+            <optgroup label="iPad">
+              <option value="pad:26">iPad Pro &middot; 2018 or newer</option>
+              <option value="pad:17">iPad Pro &middot; 2017</option>
+              <option value="pad:0">iPad Pro &middot; 2016 or older</option>
+              <option value="pad:26">iPad Air &middot; 2019 or newer</option>
+              <option value="pad:0">iPad Air 2 or older</option>
+              <option value="pad:26">iPad &middot; 2020 or newer</option>
+              <option value="pad:18.6">iPad &middot; 7th gen, 2019</option>
+              <option value="pad:17">iPad &middot; 6th gen, 2018</option>
+              <option value="pad:0">iPad &middot; 2017 or older</option>
+              <option value="pad:26">iPad mini &middot; 2019 or newer</option>
+              <option value="pad:0">iPad mini 4 or older</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="hmOS">Your iOS / iPadOS version</label>
+        <div class="sel">
+          <select id="hmOS">
+            <option value="" selected>Choose a device first&hellip;</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="hmPods">AirPods Pro 3 or later?</label>
+        <div class="sel">
+          <select id="hmPods">
+            <option value="unsure" selected>Not sure</option>
+            <option value="yes">Yes, I have them</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="results" id="hmResults" aria-live="polite">
+      <div class="result" data-min="26" data-fam="phone" data-pods="1">
+        <img src="../steadyheartbeat/app-icon.png" alt="">
+        <div class="r-main">
+          <h3>SteadyHeartBeat</h3>
+          <p class="r-req">iPhone &middot; iOS 26+ &middot; AirPods Pro 3 or later</p>
+          <p class="r-msg">Pick your device above to check.</p>
+        </div>
+        <div class="r-mark" aria-hidden="true">&mdash;</div>
+      </div>
+
+      <div class="result" data-min="17" data-fam="phone pad" data-pods="0">
+        <img src="../viroflick/app-icon.png" alt="">
+        <div class="r-main">
+          <h3>ViroFlick</h3>
+          <p class="r-req">iPhone &amp; iPad &middot; iOS 17+</p>
+          <p class="r-msg">Pick your device above to check.</p>
+        </div>
+        <div class="r-mark" aria-hidden="true">&mdash;</div>
+      </div>
+
+      <div class="result" data-min="18.6" data-fam="phone pad" data-pods="0">
+        <img src="../stringfusor/app-icon.png" alt="">
+        <div class="r-main">
+          <h3>StringFusor</h3>
+          <p class="r-req">iPhone &amp; iPad &middot; iOS 18.6+</p>
+          <p class="r-msg">Pick your device above to check.</p>
+        </div>
+        <div class="r-mark" aria-hidden="true">&mdash;</div>
+      </div>
+    </div>
+
+    <p class="hint">Pick the family &mdash; Plus, mini, Pro and Pro Max all take the same iOS as the base model. Device support follows Apple's own compatibility lists for iOS&nbsp;17, 18 and 26. If your device is not listed, it is older than anything these apps run on.</p>
   </section>
 
   <p class="stance">All three are <b>local-first</b>: no accounts, no ads, no analytics, no third-party SDKs. What happens on your device stays on your device.</p>
@@ -149,6 +286,110 @@
     <a href="mailto:info@halfmarble.com">info@halfmarble.com</a>
   </div>
 </footer>
+
+
+<script>
+/* Will-it-run checker. Runs entirely in the browser; nothing is sent anywhere.
+   Device "max" values are the newest OS band each model can reach, taken from
+   Apple's own "models compatible with iOS/iPadOS 17 / 18 / 26" support pages. */
+(function () {
+  var dev  = document.getElementById('hmDevice');
+  var os   = document.getElementById('hmOS');
+  var pods = document.getElementById('hmPods');
+  var box  = document.getElementById('hmResults');
+  if (!dev || !os || !pods || !box) return;
+
+  var rows = box.querySelectorAll('.result');
+
+  /* Offered version bands, newest first. */
+  var STEPS = [
+    { v: 26,   label: '{OS} 26 or newer' },
+    { v: 18.6, label: '{OS} 18.6 or 18.7' },
+    { v: 18,   label: '{OS} 18.0 to 18.5' },
+    { v: 17,   label: '{OS} 17' },
+    { v: 0,    label: 'Older than {OS} 17' }
+  ];
+
+  function parseDev() {
+    if (!dev.value) return null;
+    var bits = dev.value.split(':');
+    return { fam: bits[0], max: parseFloat(bits[1]) };
+  }
+
+  function osName(fam) { return fam === 'pad' ? 'iPadOS' : 'iOS'; }
+
+  function fillVersions() {
+    var d = parseDev();
+    os.innerHTML = '';
+    if (!d) {
+      os.appendChild(new Option('Choose a device first…', ''));
+      os.disabled = true;
+      return;
+    }
+    os.disabled = false;
+    var name = osName(d.fam), first = true;
+    for (var i = 0; i < STEPS.length; i++) {
+      if (STEPS[i].v > d.max) continue;          /* device cannot reach this band */
+      var opt = new Option(STEPS[i].label.replace('{OS}', name), String(STEPS[i].v));
+      os.appendChild(opt);
+      if (first) { opt.selected = true; first = false; }  /* default: newest it can run */
+    }
+  }
+
+  function render() {
+    var d = parseDev();
+    var installed = os.value === '' ? null : parseFloat(os.value);
+    var pod = pods.value;
+
+    for (var i = 0; i < rows.length; i++) {
+      var row  = rows[i];
+      var min  = parseFloat(row.getAttribute('data-min'));
+      var fams = row.getAttribute('data-fam').split(' ');
+      var needsPods = row.getAttribute('data-pods') === '1';
+      var state = '', mark = '—', msg = 'Pick your device above to check.';
+
+      if (d) {
+        if (fams.indexOf(d.fam) === -1) {
+          state = 'no';  mark = '✕';
+          msg = 'iPhone only — this one does not run on iPad.';
+        } else if (d.max < min) {
+          state = 'no';  mark = '✕';
+          msg = d.max === 0
+            ? 'This model is older than anything these apps run on.'
+            : 'Needs ' + osName(d.fam) + ' ' + min + ', and this model does not go past '
+              + osName(d.fam) + ' ' + d.max + '.';
+        } else if (installed !== null && installed < min) {
+          state = 'upd'; mark = '↑';
+          msg = 'Almost. Update to ' + osName(d.fam) + ' ' + min
+              + ' in Settings › General › Software Update, then you are set.';
+        } else if (needsPods && pod === 'no') {
+          state = 'no';  mark = '✕';
+          msg = 'Your device is fine, but the heart rate is read by the earbuds, '
+              + 'so this one needs AirPods Pro 3 or later.';
+        } else if (needsPods && pod === 'unsure') {
+          state = 'upd'; mark = '!';
+          msg = 'Your device is ready. You will also need AirPods Pro 3 or later, '
+              + 'because that is where the heart-rate sensor lives.';
+        } else {
+          state = 'yes'; mark = '✓';
+          msg = 'Ready to test. Thank you.';
+        }
+      }
+
+      row.className = 'result' + (state ? ' is-' + state : '');
+      row.querySelector('.r-mark').textContent = mark;
+      row.querySelector('.r-msg').textContent = msg;
+    }
+  }
+
+  dev.addEventListener('change', function () { fillVersions(); render(); });
+  os.addEventListener('change', render);
+  pods.addEventListener('change', render);
+
+  fillVersions();
+  render();
+})();
+</script>
 
 </body>
 </html>
