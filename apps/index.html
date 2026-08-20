@@ -91,7 +91,7 @@
   .r-msg a { color: #cbd0d5; text-decoration: underline; text-underline-offset: 3px; }
   .r-mark { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; line-height: 1; border: 1px solid #2a2a30; color: #55595e; }
   .result.is-yes .r-mark { color: #75db5c; border-color: rgba(117,219,92,0.45); background: rgba(117,219,92,0.09); }
-  .result.is-no  .r-mark { color: #f2616d; border-color: rgba(242,97,109,0.45); background: rgba(242,97,109,0.09); }
+  .result.is-no  .r-mark { color: #ef4444; border-color: rgba(239,68,68,0.5); background: rgba(239,68,68,0.11); }
   .result.is-upd .r-mark { color: #ffa126; border-color: rgba(255,161,38,0.45); background: rgba(255,161,38,0.09); }
   .result.is-yes .r-msg { color: #b6bcc2; }
 
@@ -359,7 +359,7 @@
             : 'Needs ' + osName(d.fam) + ' ' + min + ', and this model does not go past '
               + osName(d.fam) + ' ' + d.max + '.';
         } else if (installed !== null && installed < min) {
-          state = 'upd'; mark = '↑';
+          state = 'upd'; mark = '!';
           msg = 'Almost. Update to ' + osName(d.fam) + ' ' + min
               + ' in Settings › General › Software Update, then you are set.';
         } else if (needsPods && pod === 'no') {
