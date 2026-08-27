@@ -489,19 +489,24 @@
         <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
             halfmarble donates <span class="text-yellow-500 font-bold">5% of net profits</span> to the organizations whose research our tools stand on. Not charity in the abstract &mdash; reinvestment in the intellectual commons we depend on.
         </p>
-        <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-6">
-            <a href="https://www.teamfox.org" target="_blank" rel="noopener" class="block border border-zinc-800 p-6 text-left hover:border-yellow-900 transition duration-300">
-                <div class="mono text-xs text-yellow-600 uppercase tracking-widest mb-2">2.5%</div>
-                <div class="text-white text-lg font-bold mb-2">Team Fox</div>
-                <div class="text-zinc-500 text-sm leading-relaxed">The grassroots fundraising arm of The Michael J. Fox Foundation, the largest non-profit funder of Parkinson's research. They fund the science halfmarble learns from. Additionally, 10% of the net profit from selling the open-source SteadyHandTool goes directly to support <strong class="text-zinc-400">Team Fox</strong>, the grassroots fundraising program of The Michael J. Fox Foundation for Parkinson's Research. halfmarble is an independent Team Fox third-party fundraiser.</div>
-            </a>
+        <!-- Stacked, not two columns: the two descriptions differ enough in length that a
+             2-col grid stretches both cards to equal height and leaves the short one mostly
+             empty. Cards size to their own content here. PHC leads so the section steps from
+             the short block into the longer one. -->
+        <div class="grid gap-6 max-w-2xl mx-auto mb-6">
             <a href="https://phcuk.org" target="_blank" rel="noopener" class="block border border-zinc-800 p-6 text-left hover:border-yellow-900 transition duration-300">
                 <div class="mono text-xs text-yellow-600 uppercase tracking-widest mb-2">2.5%</div>
                 <div class="text-white text-lg font-bold mb-2">Public Health Collaboration (PHC)</div>
-                <!-- PHC's own two-tone mark on a
-                     white chip so the brand colors survive the dark ground. -->
-                <div class="bg-white rounded-md p-3 mb-3 inline-block"><img src="/assets/phc-logo.png" alt="Public Health Collaboration logo" style="height: 34px; width: auto;"></div>
                 <div class="text-zinc-500 text-sm leading-relaxed">The low-carb, real-food metabolic health community that informed halfmarble's approach to fasting, TCR, and meal timing.</div>
+            </a>
+            <!-- MJFF terms: this descriptor and the "largest non-profit funder" phrasing are
+                 approved by the Foundation - do not reword them here. The third-party-fundraiser
+                 disclosure and the teamfox.org link are required by the signed 2026 Portion of
+                 Proceeds form - do not drop either. -->
+            <a href="https://www.teamfox.org" target="_blank" rel="noopener" class="block border border-zinc-800 p-6 text-left hover:border-yellow-900 transition duration-300">
+                <div class="mono text-xs text-yellow-600 uppercase tracking-widest mb-2">2.5%</div>
+                <div class="text-white text-lg font-bold mb-2">Team Fox</div>
+                <div class="text-zinc-500 text-sm leading-relaxed">The grassroots fundraising arm of The Michael J. Fox Foundation, the largest non-profit funder of Parkinson's research. They fund the science halfmarble learns from. <strong class="text-zinc-400">Team Fox</strong> also receives 10% of the net profit from the open-source SteadyHandTool. halfmarble is an independent Team Fox third-party fundraiser.</div>
             </a>
         </div>
         <p class="mono text-xs text-zinc-600 uppercase tracking-widest mt-8">
