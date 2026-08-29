@@ -25,7 +25,7 @@ Patient data is not a commodity. By default it never leaves your device; any fut
 halfmarble is not a startup; it is a patient-led R&D fight. The science is the engine—we just built the dashboard. 
 
 To ensure the underlying science continues to advance, we legally pledge a flat percentage of our software net profits to the institutions driving the vanguard of research:
-*   **2.5%** to Team Fox, the grassroots fundraising arm of The Michael J. Fox Foundation
+*   **2.5%** to Team Fox, the grassroots fundraising program of The Michael J. Fox Foundation
 *   **2.5%** to the [Public Health Collaboration](https://phcuk.org/) (PHC)
 
 *For live prototypes and full clinical documentation, visit [halfmarble.com](https://halfmarble.com).*
