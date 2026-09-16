@@ -86,7 +86,7 @@ def main() -> int:
         "We'll email you when the beta is ready. No spam, no selling your email, no tracking pixels in this message.\n\n"
         "This is a personal project. My wife Anya and I are building it because I need it.\n\n"
         "Gerard Ziemski\n"
-        "Cofounder, Bioenergetics OS Architect | Halfmarble LLC\n"
+        "Cofounder, Platform Architect | Halfmarble LLC\n"
     )
 
     msg = EmailMessage()
