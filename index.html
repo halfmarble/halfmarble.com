@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>halfmarble | Science is the Engine</title>
+    <title>halfmarble | iPhone and iPad apps</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link href="/assets/fonts/fonts.css" rel="stylesheet">
     <style>
-        body { 
-            background-color: #0a0a0a; 
-            color: #d1d5db; 
-            font-family: 'Inter', sans-serif; 
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
         }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .accent { color: #eab308; } /* Industrial Yellow */
@@ -27,62 +27,6 @@
             border-color: #eab308;
             box-shadow: 0 0 24px rgba(234, 179, 8, 0.35);
         }
-
-        /* PD rest tremor on the hero logo — episodic, subtle, honest.
-           ~2s of 4-6 Hz micro-displacement, then ~4s of stillness.
-           The logo trembles like its founder's hands. The tools
-           halfmarble builds are meant to make it stop. */
-        @keyframes tremor {
-            0%   { transform: translate(0, 0) rotate(0); opacity: 1; }
-            2%   { transform: translate(1.5px, -1px) rotate(0.6deg); opacity: 0.5; }
-            4%   { transform: translate(-2px, 0.8px) rotate(-0.5deg); opacity: 0.6; }
-            6%   { transform: translate(1px, 1.5px) rotate(0.8deg); opacity: 0.4; }
-            8%   { transform: translate(-1.5px, -0.6px) rotate(-0.7deg); opacity: 0.5; }
-            10%  { transform: translate(1.2px, -1.2px) rotate(0.5deg); opacity: 0.4; }
-            12%  { transform: translate(-0.8px, 1px) rotate(-0.8deg); opacity: 0.6; }
-            14%  { transform: translate(2px, 0.5px) rotate(0.6deg); opacity: 0.4; }
-            16%  { transform: translate(-1.2px, -1.5px) rotate(-0.5deg); opacity: 0.5; }
-            18%  { transform: translate(0.6px, 0.8px) rotate(0.3deg); opacity: 0.6; }
-            20%  { transform: translate(-1px, -0.5px) rotate(-0.3deg); opacity: 0.7; }
-            22%  { transform: translate(0.8px, 0.6px) rotate(0.4deg); opacity: 0.6; }
-            24%  { transform: translate(-0.6px, 1px) rotate(-0.4deg); opacity: 0.7; }
-            26%  { transform: translate(1.2px, -0.8px) rotate(0.6deg); opacity: 0.6; }
-            28%  { transform: translate(-1.5px, 0.4px) rotate(-0.3deg); opacity: 0.8; }
-            30%  { transform: translate(0.5px, -0.6px) rotate(0.2deg); opacity: 0.9; }
-            33%  { transform: translate(0, 0) rotate(0); opacity: 1; }
-            100% { transform: translate(0, 0) rotate(0); opacity: 1; }
-        }
-        .tremor { animation: tremor 6s ease-in-out infinite; }
-
-        /* Founders section: animations start paused, trigger on scroll
-           with a 2s delay so the user reads the text before the tremor hits */
-        #founders .tremor,
-        #founders .tremor-text,
-        #founders .fight-text { animation-play-state: paused; animation-delay: 2s; }
-        #founders.in-view .tremor,
-        #founders.in-view .tremor-text,
-        #founders.in-view .fight-text { animation-play-state: running; }
-        @keyframes tremor-text {
-            0%   { color: inherit; }
-            4%   { color: #D12C3B; }
-            14%  { color: #D12C3B; }
-            28%  { color: inherit; }
-            33%  { color: inherit; }
-            100% { color: inherit; }
-        }
-        .tremor-text { animation: tremor-text 6s ease-in-out infinite; }
-        @keyframes fight-text {
-            0%   { color: inherit; }
-            20%  { color: inherit; }
-            26%  { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.4); }
-            33%  { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.4); }
-            40%  { color: inherit; text-shadow: none; }
-            100% { color: inherit; text-shadow: none; }
-        }
-        .fight-text { animation: fight-text 6s ease-in-out infinite; }
-        @media (prefers-reduced-motion: reduce) {
-            .tremor, .tremor-text, .fight-text { animation: none !important; }
-        }
     </style>
     <!-- Tailwind, built from this page's own classes (not the CDN): see tailwind.config.js.
          Keep this LAST in <head>. The old cdn.tailwindcss.com script injected its generated
@@ -96,16 +40,13 @@
         <div class="max-w-5xl">
             <div class="flex flex-col items-center mb-12">
                 <img src="assets/logo/logo.png" alt="halfmarble logo"
-                     class="w-20 h-20 mb-4 tremor"
+                     class="w-20 h-20 mb-4"
                      style="filter: brightness(0) invert(1); opacity: 0.9;">
                 <div class="mono text-xs text-zinc-500 uppercase tracking-[0.4em]">halfmarble</div>
             </div>
             <h1 class="text-3xl md:text-6xl font-extrabold leading-tight tracking-tighter text-white">
-                <br> <span class="text-white">when you are racing</span>
-                <br> <span class="text-white">against your own biology</span>
-                <br> <span class="text-zinc-500 italic">story is just the exhaust</span>
-                <br> <span class="accent">the science is the engine</span>
-                <br> <span class="text-purple-600">and our time is the fuel</span>
+                <span class="text-white">we build iPhone and iPad apps</span>
+                <br> <span class="accent">that work when your hands don't</span>
             </h1>
             <p class="mt-10 mono text-zinc-500 uppercase tracking-[0.3em] text-xs" style="transform: scaleY(2.0); transform-origin: left center; display:inline-block;">Gerard Ziemski // halfmarble cofounder // platform architect</p>
         </div>
@@ -113,38 +54,176 @@
 
     <section class="py-32 px-6 bg-zinc-950 border-b border-zinc-900">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl md:text-4xl font-bold text-white leading-snug">
-                "The only tools we have to manage our own <span class="text-red-800">slice of PD hell.</span>"
+            <h2 class="text-2xl md:text-4xl font-bold text-white" style="line-height:1.55;">
+                Twenty-five years in, I fell back<br><span style="color:#D12C3B;">in <span class="font-extrabold" style="font-size:1.35em;letter-spacing:-0.03em;">LOVE</span> with creating software.</span>
             </h2>
-            <div class="mt-8 h-1 w-24 bg-red-900 mx-auto"></div>
+            <div class="mt-8 h-1 w-24 mx-auto" style="background-color:#D12C3B;"></div>
             <p class="mt-8 text-zinc-400 text-lg leading-relaxed max-w-2xl mx-auto">
-                I am not building for a market. I am building for a race. Whether it is hardware to stabilize a trembling hand or software to track the science behind cellular repair — these are the mechanics of survival.
+                Agentic coding tools changed what two people can ship. Not because they write it for me: because they clear the friction that used to end a session before the good part. An idea now survives long enough to become an app. So we build, for iPhone and iPad, and we use everything we ship.
             </p>
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 py-32">
+    <section id="ios-apps" class="max-w-6xl mx-auto px-6 py-32">
+        <div class="text-center mb-16">
+            <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-6">
+                What we make <span class="accent">//</span> Software for iPhone and iPad
+            </div>
+            <p class="text-zinc-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                There are two ways to build software for hands that shake. Design the touch so a tremor cannot spoil it: hold instead of aim, no timers, undo without limit. Or take the hands out of it altogether and use your voice. We do both.
+            </p>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-16 items-start">
-            
+
             <div class="space-y-16 self-start">
 
                 <div class="card p-10 rounded-none">
                     <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 01 // Hardware</div>
-                        <h3 class="text-4xl font-bold mb-6 text-cyan-500">SteadyHandTool</h3>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Voice // 01 // iPhone</div>
+                        <h3 class="text-4xl font-bold mb-6" style="color:#E84855;">SteadyHeartBeat</h3>
                         <p class="text-zinc-400 mb-8 leading-relaxed">
-                            A high-stability SMD soldering aid designed to dampen tremors. Born from the need to keep tinkering when biology tries to stop it. Open-source because community is the only way forward.
+                            Your heart rate, read aloud. SteadyHeartBeat speaks your live heart rate from AirPods Pro 3, with no watch, no chest strap and no glancing at a screen. Everything runs on your iPhone, and your data never leaves it.
                         </p>
                         <div class="space-y-3 mb-12">
                             <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-cyan-500 mr-3">●</span> CERN-OHL-S-2.0 (OPEN SOURCE)
+                                <span class="mr-3" style="color:#E84855;">&#9679;</span> OPEN BETA ON TESTFLIGHT
                             </div>
                             <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-cyan-500 mr-3">●</span> HIGH-MASS VIBRATION DAMPENING
+                                <span class="mr-3" style="color:#E84855;">&#9679;</span> SPOKEN ALOUD &mdash; NO SCREEN NEEDED
                             </div>
                             <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-cyan-500 mr-3">●</span> BUILT FOR PRECISION PCB WORK
+                                <span class="mr-3" style="color:#E84855;">&#9679;</span> 100% ON-DEVICE &mdash; DATA NEVER LEAVES
                             </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#E84855;">&#9679;</span> CYCLING ZONES &amp; BOXING ROUNDS, CALLED ALOUD
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#E84855;">&#9679;</span> OPEN SOURCE, APACHE-2.0
+                            </div>
+                        </div>
+                    </div>
+                    <a href="steadyheartbeat/index.html" class="block border px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="border-color:rgba(232,72,85,0.4);color:#E84855;" onmouseover="this.style.backgroundColor='rgba(232,72,85,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                        SEE STEADYHEARTBEAT
+                    </a>
+                </div>
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Voice // 02 // iPhone</div>
+                        <h3 class="text-4xl font-bold mb-6" style="color:#7ab8d4;">DashTales</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            Offline entertainment for the car, hands-free. Books, games, stories and simple conversation, all living on the phone, so it keeps working where there is no signal at all. You talk to it: no hands involved, which is exactly the point.
+                        </p>
+                        <div class="space-y-3 mb-12">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#7ab8d4;">&#9679;</span> IN DEVELOPMENT &mdash; iPHONE APP
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#7ab8d4;">&#9679;</span> FULLY OFFLINE &mdash; NO SIGNAL NEEDED
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#7ab8d4;">&#9679;</span> BOOKS, GAMES, STORIES, SIMPLE TALK
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#7ab8d4;">&#9679;</span> PACKS YOU BUY ONCE &mdash; NO SUBSCRIPTION
+                            </div>
+                        </div>
+                    </div>
+                    <a href="dashtales/" class="block border px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="border-color:rgba(122,184,212,0.4);color:#7ab8d4;" onmouseover="this.style.backgroundColor='rgba(122,184,212,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                        SEE DASHTALES
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="space-y-16 self-start">
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Touch // 03 // iPhone &amp; iPad</div>
+                        <h3 class="text-4xl font-bold mb-6" style="color:#cbb48c;">ViroFlick</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            A casual flick-and-defend arcade game. Read the pathogen swarming your patient, arm the one cell type that counters it, and flick a homing cell to hold the line. You hold rather than aim, so a shaky finger still plays it well.
+                        </p>
+                        <div class="space-y-3 mb-12">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#cbb48c;">&#9679;</span> OPEN BETA ON TESTFLIGHT
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#cbb48c;">&#9679;</span> HOLD, DON'T AIM &mdash; BUILT FOR TREMOR
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#cbb48c;">&#9679;</span> SIX CASES, RUNS FULLY OFFLINE
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#cbb48c;">&#9679;</span> iPHONE &amp; iPAD, iOS 17+
+                            </div>
+                        </div>
+                    </div>
+                    <a href="viroflick/" class="block border px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="border-color:rgba(203,180,140,0.4);color:#cbb48c;" onmouseover="this.style.backgroundColor='rgba(203,180,140,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                        SEE VIROFLICK
+                    </a>
+                </div>
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Touch // 04 // iPhone &amp; iPad</div>
+                        <h3 class="text-4xl font-bold mb-6" style="color:#75db5c;">StringFusor</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            A casual color-matching puzzle game set in deep space. Steer falling strings of colored pieces, stack them, and build patterns that fuse and release their energy. No timers and unlimited undo, so nothing is lost to a bad moment.
+                        </p>
+                        <div class="space-y-3 mb-12">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#75db5c;">&#9679;</span> OPEN BETA ON TESTFLIGHT
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#75db5c;">&#9679;</span> NO TIMERS, UNLIMITED UNDO
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#75db5c;">&#9679;</span> PLAYS AT YOUR OWN PACE
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="mr-3" style="color:#75db5c;">&#9679;</span> iPHONE &amp; iPAD, iOS 18.6+
+                            </div>
+                        </div>
+                    </div>
+                    <a href="stringfusor/" class="block border px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="border-color:rgba(117,219,92,0.4);color:#75db5c;" onmouseover="this.style.backgroundColor='rgba(117,219,92,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                        SEE STRINGFUSOR
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="apps/" class="inline-block border px-8 py-4 mono text-sm font-bold transition duration-300" style="border-color:rgba(234,179,8,0.4);color:#eab308;" onmouseover="this.style.backgroundColor='rgba(234,179,8,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                ALL THE iOS APPS &rarr;
+            </a>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 pb-32">
+        <div class="card p-10 rounded-none">
+            <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">The one piece of hardware</div>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4 text-cyan-500">SteadyHandTool</h3>
+                    <p class="text-zinc-400 leading-relaxed">
+                        We are a software company with one thing you can hold. SteadyHandTool is a high-stability soldering aid for fine SMD work: heavy, damped, and steady enough that small parts stay exactly where you put them. Open hardware, so anyone can build one, improve it, or make it fit their own bench.
+                    </p>
+                </div>
+                <div>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-cyan-500 mr-3">&#9679;</span> CERN-OHL-S-2.0 (OPEN SOURCE)
+                        </div>
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-cyan-500 mr-3">&#9679;</span> HIGH-MASS VIBRATION DAMPENING
+                        </div>
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-cyan-500 mr-3">&#9679;</span> BUILT FOR PRECISION PCB WORK
                         </div>
                     </div>
                     <a href="https://www.crowdsupply.com/halfmarble/steady-hand-tool" class="block border border-cyan-900/40 px-8 py-4 text-center mono text-sm text-cyan-500 font-bold hover:bg-cyan-500/10 transition duration-300 w-full">
@@ -154,198 +233,41 @@
                         SEE THE HARDWARE
                     </a>
                 </div>
-
-                <div class="card p-10 rounded-none">
-                    <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 02 // Hardware</div>
-                        <h3 class="text-4xl font-bold mb-6 text-blue-500">UnSteadyRing</h3>
-                        <p class="text-zinc-400 mb-8 leading-relaxed">
-                            Ten chipless passive rings, one per finger. Two wrist-worn hubs designed to excite them with passive RF telemetry and fuse the returned digit kinematics with continuous autonomic biometrics (single-lead ECG, PPG, skin temperature); an ankle hub for gait and freezing-of-gait. The Steady tools intervene — UnSteadyRing observes. Intended as the continuous, contextualized reference layer for everything else — sensing hardware is in early R&D (design stage).
-                        </p>
-                        <div class="space-y-3 mb-12">
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> 17 DEFENSIVE PROVISIONAL APPLICATIONS
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> 10 CHIPLESS PASSIVE FINGER RINGS
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> REFLECTED-WAVE TELEMETRY
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> AUTONOMIC PHYSIOLOGICAL SENSORS
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> PER-FINGER TREMOR QUANTIFICATION
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> ANKLE HUB · GAIT &amp; FREEZING-OF-GAIT
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-blue-500 mr-3">●</span> FUSED STREAM TO STEADYDOSETRACKER
-                            </div>
-                            <div class="mono text-[10px] text-blue-700 uppercase tracking-widest mt-3 pt-3 border-t border-zinc-800">Hardware design targets — no device built yet</div>
-                        </div>
-                    </div>
-                    <a href="blog/unsteady-ring.html" class="block border border-blue-900/40 px-8 py-4 text-center mono text-sm text-blue-500 font-bold hover:bg-blue-500/10 transition duration-300 w-full">
-                        READ OUR BLOG
-                    </a>
-                </div>
-
             </div>
-
-            <div class="space-y-16 self-start">
-
-                <div class="card p-10 rounded-none">
-                    <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 03 // Software</div>
-                        <h3 class="text-4xl font-bold mb-6 text-purple-500">SteadyDoseTracker</h3>
-                        <p class="text-zinc-400 mb-8 leading-relaxed">
-                            A pharmacokinetic visualizer that models the blood concentration curves of the medication schedule your doctor prescribed. Half-life math shows how your levels rise and fall in real-time — not to tell you what to take, but to help you and your clinician see what is already happening. The Bridge: PK helps illustrate what you can feel (ON/OFF states), building trust for the autophagy states you cannot.
-                        </p>
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> BATEMAN PHARMACOKINETIC MODEL
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> FASTING-AWARE ABSORPTION
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> DESIGNED FOR REAL-WORLD EVIDENCE
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> GLASS BOX SOURCE TRACING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> MENTAL STATE &amp; MOOD TRACKING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> OBJECTIVE MOTOR TESTING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> FOCAL SYMPTOM LOGGING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> GLUCOSE / KETONE CORRELATION
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-purple-500 mr-3">●</span> CALENDAR → MOTOR DEMAND PREDICTION
-                            </div>
-                        </div>
-                    </div>
-                    <a href="steady_dose_tracker_demo.html" class="block border border-purple-900/40 px-8 py-4 text-center mono text-sm text-purple-500 font-bold hover:bg-purple-500/10 transition duration-300 w-full">
-                        SEE THE ENGINE
-                    </a>
-                </div>
-
-                <div class="card p-10 rounded-none">
-                    <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 04 // Software</div>
-                        <h3 class="text-4xl font-bold mb-6 text-yellow-500">SteadyFastingTracker</h3>
-                        <p class="text-zinc-400 mb-8 leading-relaxed">
-                            A technical solution for a biological war. This is not a lifestyle app; it is a specialized fasting engine grounded in the latest autophagy research. The science is the engine — we just built the dashboard.
-                        </p>
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> AI-DRIVEN STATE ESTIMATION
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> AUTOPHAGY-INFORMED PROTOCOLS
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> THERAPEUTIC CARBOHYDRATE RESTRICTION (TCR) PROTOCOLS
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> GLASS BOX SOURCE TRACING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> MENTAL STATE &amp; COGNITIVE CLARITY
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> GKI &amp; METABOLIC TRACKING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-yellow-500 mr-3">●</span> SAFETY CIRCLE PROTOCOLS &mdash; HUMAN-IN-THE-LOOP ESCALATION
-                            </div>
-                        </div>
-                    </div>
-                    <a href="steady_fasting_tracker_demo.html" class="block border border-yellow-900/40 px-8 py-4 text-center mono text-sm text-yellow-600 font-bold hover:bg-yellow-600/10 transition duration-300 w-full">
-                        SEE THE ENGINE
-                    </a>
-                </div>
-
-                <div class="card p-10 rounded-none">
-                    <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 05 // Software</div>
-                        <h3 class="text-4xl font-bold mb-6 text-emerald-500">SteadyFuelTracker</h3>
-                        <p class="text-zinc-400 mb-8 leading-relaxed">
-                            A specialized metabolic intake engine designed around the Therapeutic Carbohydrate Restriction (TCR) guidelines championed by the Public Health Collaboration (PHC). This is not a diet app. It will be a macro-nutrient tracker that lets you log carbohydrate and protein timing relative to your levodopa doses and track your own nutritional ketosis, following TCR guidance.
-                        </p>
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-emerald-500 mr-3">●</span> TCR PROTOCOL ALIGNMENT (PHC)
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-emerald-500 mr-3">●</span> LEVODOPA / PROTEIN INTERFERENCE LOGGING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-emerald-500 mr-3">●</span> GLUCOSE &amp; KETONE (GKI) SYNCING
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-emerald-500 mr-3">●</span> MACRO-TO-MOTOR STATE CORRELATION
-                            </div>
-                        </div>
-                    </div>
-                    <div class="block border border-emerald-900/40 px-8 py-4 text-center mono text-sm text-emerald-600 font-bold w-full">
-                        IN DEVELOPMENT
-                    </div>
-                </div>
-
-                <div class="card p-10 rounded-none">
-                    <div>
-                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">System // 06 // Software</div>
-                        <h3 class="text-4xl font-bold mb-6 text-[#E84855]">SteadyHeartBeat</h3>
-                        <p class="text-zinc-400 mb-8 leading-relaxed">
-                            Your heart rate, read aloud. SteadyHeartBeat speaks your live heart rate from AirPods Pro 3 — no watch, no chest strap, no screen. Everything runs on-device; your data never leaves the iPhone. Source and prior art are public now; a free open beta is running on TestFlight, with the App Store release to follow.
-                        </p>
-                        <div class="space-y-3 mb-12">
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-[#E84855] mr-3">●</span> OPEN SOURCE NOW · FREE AT LAUNCH
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-[#E84855] mr-3">●</span> 100% ON-DEVICE — DATA NEVER LEAVES
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-[#E84855] mr-3">●</span> CYCLING 5-ZONE COACHING, READ ALOUD
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-[#E84855] mr-3">●</span> BOXING ROUND TIMER, CALLED ALOUD
-                            </div>
-                            <div class="flex items-center text-sm mono text-zinc-500">
-                                <span class="text-[#E84855] mr-3">●</span> AIRPODS PRO 3 — NO WATCH, NO STRAP
-                            </div>
-                        </div>
-                    </div>
-                    <a href="steadyheartbeat/index.html" class="block px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="background-color:#E84855;color:#ffffff;" onmouseover="this.style.backgroundColor='#d13d49'" onmouseout="this.style.backgroundColor='#E84855'">
-                        SEE THE APP
-                    </a>
-                </div>
-
-            </div>
-
         </div>
     </section>
 
-    <section id="ios-apps" class="max-w-3xl mx-auto px-6 py-20 text-center border-t border-zinc-900">
-        <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-6">
-            On Your iPhone <span class="accent">//</span> iOS Apps
+    <section class="max-w-4xl mx-auto px-6 pb-32">
+        <div class="card p-10 rounded-none">
+            <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">The other half of the work</div>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4 text-blue-500">Parkinson's research, sensing &amp; open IP</h3>
+                    <p class="text-zinc-400 leading-relaxed">
+                        Why the apps are built the way they are. The wearable sensing platform still in design, the Parkinson's research behind it, and the methods we publish as dated, public-domain prior art so that no one can fence them off later.
+                    </p>
+                </div>
+                <div>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-blue-500 mr-3">&#9679;</span> UNSTEADYRING &mdash; PASSIVE FINGER SENSING
+                        </div>
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-blue-500 mr-3">&#9679;</span> 17 PROVISIONAL APPLICATIONS FILED
+                        </div>
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-blue-500 mr-3">&#9679;</span> 9 PUBLIC-DOMAIN DISCLOSURES
+                        </div>
+                        <div class="flex items-center text-sm mono text-zinc-500">
+                            <span class="text-blue-500 mr-3">&#9679;</span> FDA 2019 GENERAL WELLNESS POLICY
+                        </div>
+                    </div>
+                    <a href="pd/" class="block border px-8 py-4 text-center mono text-sm font-bold transition duration-300 w-full" style="border-color:rgba(59,130,246,0.4);color:#3b82f6;" onmouseover="this.style.backgroundColor='rgba(59,130,246,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
+                        SEE THE RESEARCH
+                    </a>
+                </div>
+            </div>
         </div>
-        <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-            One wellness app and two games. SteadyHeartBeat speaks your heart rate aloud, and ViroFlick and StringFusor are casual games — all built to work with unsteady hands, all running entirely on your device.
-        </p>
-        <a href="apps/" class="inline-block border px-8 py-4 mono text-sm font-bold transition duration-300" style="border-color:rgba(234,179,8,0.4);color:#eab308;" onmouseover="this.style.backgroundColor='rgba(234,179,8,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
-            SEE THE iOS APPS &rarr;
-        </a>
     </section>
 
     <section class="max-w-3xl mx-auto px-6 py-20 text-center border-t border-zinc-900">
@@ -360,100 +282,14 @@
         </a>
     </section>
 
-    <section id="open-ip" class="max-w-4xl mx-auto px-6 py-24 border-t border-zinc-900">
-        <div class="text-center mb-12">
-            <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-6">
-                Open IP <span class="text-purple-500">//</span> What We Open, What We Protect
-            </div>
-            <p class="text-zinc-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                Steward, not owner &mdash; of data, and of ideas. The methods we want anyone to be free to use, we publish as dated, public-domain <span class="text-white">prior art</span>, so no one can fence them off later. The core sensing platform, we protect by filing.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="border border-zinc-800 p-8" style="background: linear-gradient(135deg, #111111 0%, #0f0f0f 100%);">
-                <div class="mono text-xs text-purple-700 uppercase tracking-[0.2em] mb-4">Published defensively <span class="text-zinc-600">//</span> Public domain</div>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-6">
-                    Defensive publications in the <a href="https://www.tdcommons.org/" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">Technical Disclosure Commons</a>, an examiner-searched prior-art database. Dated, public-domain, and freely practicable by anyone.
-                </p>
-                <div class="space-y-3">
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Consumer earbud as a closed-loop biometric sensor for exercise support &mdash; <a href="https://www.tdcommons.org/dpubs_series/10440" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10440</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Heart-rate-recovery-gated rest-interval timing through a consumer earbud &mdash; <a href="https://www.tdcommons.org/dpubs_series/10441" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10441</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Crediting recorded prior activity toward an exercise warm-up &mdash; <a href="https://www.tdcommons.org/dpubs_series/10439" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10439</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Robust overnight heart-rate-variability estimation independent of sleep staging &mdash; <a href="https://www.tdcommons.org/dpubs_series/10443" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10443</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Nap-level autonomic (HRV) tracking and a nap-day recovery comparison for daytime sleepiness in Parkinson's &mdash; <a href="https://www.tdcommons.org/dpubs_series/10454" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10454</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Active-sleep (dream-enactment) burden as a longitudinal self-tracking signal in movement-disordered sleep &mdash; <a href="https://www.tdcommons.org/dpubs_series/10455" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10455</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Per-session sleep onset latency as a two-tailed self-tracking signal in Parkinson's, across nights and naps &mdash; <a href="https://www.tdcommons.org/dpubs_series/10494" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10494</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Synchronized multi-line digital signal generation on an ESP32 (NEAToBOARD) &mdash; <a href="https://www.tdcommons.org/dpubs_series/10442" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10442</a></span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
-                        <span>Opt-in comparison of a wearable biometric against population and disease-cohort distributions, computed on-device under differential privacy &mdash; <a href="https://www.tdcommons.org/dpubs_series/10495" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10495</a></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border border-zinc-800 p-8" style="background: linear-gradient(135deg, #111111 0%, #0f0f0f 100%);">
-                <div class="mono text-xs text-blue-700 uppercase tracking-[0.2em] mb-4">Protected by filing <span class="text-zinc-600">//</span> UnSteadyRing</div>
-                <p class="text-zinc-500 text-sm leading-relaxed mb-6">
-                    The <strong class="text-zinc-300">UnSteadyRing</strong> wearable sensing platform &mdash; passive finger nodes read by wrist-worn hubs &mdash; is protected by <strong class="text-zinc-300">seventeen provisional patent applications</strong> filed with the USPTO in 2026, covering fine-motor and bioenergetic sensing across the hand, limbs, head, and ground interface.
-                </p>
-                <div class="space-y-2">
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
-                        <span>Reversed-topology finger sensing &mdash; inductive, fractal-resonant, magnetic, and RF-backscatter nodes</span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
-                        <span>Bilateral and lower-extremity telemetry; battery-free intra-body-powered rings</span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
-                        <span>Head-worn earbud-IMU neuromotor observation; striking-exercise biomarkers</span>
-                    </div>
-                    <div class="flex items-baseline text-sm text-zinc-400">
-                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
-                        <span>Standing-platform multi-modal sensing &mdash; lean-mass-adjusted steadiness, autonomic&ndash;somatic and bioenergetic&ndash;neuromotor correlation, repeated-squat power decrement</span>
-                    </div>
-                </div>
-                <p class="text-zinc-600 text-xs leading-relaxed mt-6 italic">
-                    The <span class="not-italic">Un</span> prefix is intentional &mdash; UnSteadyRing observes; it does not intervene.
-                </p>
-            </div>
-        </div>
-    </section>
-
     <section id="founders" class="max-w-4xl mx-auto px-6 py-24 text-center border-t border-zinc-900">
         <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-12">
-            The "we" in "we need this"
+            Two of us <span class="accent">//</span> Charlottesville, Virginia
         </div>
 
         <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-12 mb-10" style="max-width:600px;margin-left:auto;margin-right:auto;">
             <div class="text-center flex-1">
-                <div class="tremor" style="display:flex;justify-content:center;">
+                <div style="display:flex;justify-content:center;">
                 <img src="assets/gerard.jpg" alt="Gerard Ziemski"
                      onclick="openBio('bio-gerard')"
                      class="founder-photo w-32 h-32 rounded-full object-cover mb-4 cursor-pointer">
@@ -473,8 +309,8 @@
         </div>
 
         <p class="text-zinc-500 text-base leading-relaxed max-w-xl mx-auto italic">
-            "My wife and I are building this because I have <span class="tremor-text">Parkinson's Disease</span>.
-            halfmarble is not a startup. It is a <span class="fight-text">fight</span>."
+            "I have Parkinson's. It is why every app here is built to work with unsteady hands,
+            and why I know when one doesn't."
         </p>
 
         <p class="mono text-xs text-zinc-600 uppercase tracking-widest mt-8">
@@ -487,7 +323,7 @@
             Giving Back <span class="text-yellow-600">//</span> 5% of Net Profits
         </div>
         <p class="text-zinc-400 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-            halfmarble donates <span class="text-yellow-500 font-bold">5% of net profits</span> to the organizations whose research our tools stand on. Not charity in the abstract &mdash; reinvestment in the intellectual commons we depend on.
+            halfmarble gives <span class="text-yellow-500 font-bold">5% of net profits</span> to the organizations whose research our work stands on. Not charity in the abstract: reinvestment in the commons we build from.
         </p>
         <!-- Stacked, not two columns: the two descriptions differ enough in length that a
              2-col grid stretches both cards to equal height and leaves the short one mostly
@@ -518,25 +354,6 @@
         </p>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-32">
-        <div class="card p-10 rounded-none">
-            <div class="mono text-xs mb-4 text-zinc-500 uppercase tracking-widest text-center">Join us</div>
-            <form id="beta-form" action="https://script.google.com/macros/s/AKfycbwD1VWwM2WbMpEOy19PtieNgspsEuOoctMnTys-0uPj9L-jbIOiPfU9XA6lNFz0nIcHqA/exec" method="POST" class="flex flex-col sm:flex-row gap-3">
-                <input type="hidden" name="page" value="index">
-                <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true"
-                    style="position:absolute;left:-9999px;width:0;height:0;border:0;padding:0;">
-                <input type="email" name="email" placeholder="your@email.com" required
-                    class="flex-1 bg-black border border-zinc-700 px-4 py-4 mono text-sm text-white placeholder-zinc-600 focus:border-zinc-400 focus:outline-none transition">
-                <button type="submit" class="bg-zinc-700 text-zinc-200 px-8 py-4 mono text-sm font-bold hover:bg-zinc-600 hover:text-white transition duration-300 whitespace-nowrap">
-                    REQUEST BETA ACCESS
-                </button>
-            </form>
-            <p id="beta-form-error" class="mono text-xs text-zinc-500 mt-3 text-center" hidden>
-                Something went wrong. Email <a href="mailto:info@halfmarble.com" class="underline">info@halfmarble.com</a> and we will add you.
-            </p>
-        </div>
-    </section>
-
     <section class="max-w-6xl mx-auto px-6 pb-16">
         <div class="mono text-xs text-zinc-600 uppercase tracking-widest mb-4 text-center">Open Source</div>
         <div class="flex flex-wrap gap-x-8 gap-y-2 justify-center">
@@ -552,13 +369,13 @@
         <div class="mono text-xs text-zinc-600 uppercase tracking-widest mb-4 text-center">Transparency</div>
         <div class="flex flex-wrap gap-x-8 gap-y-2 justify-center">
             <a href="glass-box/data.html" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid transparent;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='transparent'">Glass Box: Your Data, Transparent</a>
-            <a href="research/" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid transparent;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='transparent'">For Researchers</a>
+            <a href="pd/" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid transparent;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='transparent'">Parkinson's research, sensing &amp; open IP</a>
         </div>
     </section>
 
     <footer class="py-20 text-center border-t border-zinc-900">
         <div class="mono text-xs text-zinc-600 uppercase tracking-widest mb-4">Identity // halfmarble</div>
-        <p class="text-zinc-500 text-sm">Engineering for the unbridgeable difference.</p>
+        <p class="text-zinc-500 text-sm">Small software, built to last, by two people who use it.</p>
         <a href="mailto:info@halfmarble.com" class="mt-6 inline-block text-zinc-500 font-bold" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">info@halfmarble.com</a>
     </footer>
 
@@ -577,7 +394,8 @@
             </div>
             <div class="text-zinc-400 text-sm leading-relaxed space-y-4">
                 <p>Bachelor of Science, Honors Computer Science degree from Western University in 1998, plus two years toward an M.Sc. &mdash; dropped out to join Apple. Twenty-five years writing software. New Media Lab. Apple. Sun Microsystems. Oracle. Two patents along the way. Early open source contributor to gl4java and jogl &mdash; Java bindings for OpenGL &mdash; back when Java on the desktop still felt like the future.</p>
-                <p>Diagnosed with Parkinson's Disease over 10 years ago. halfmarble is the engine I built out of necessity — to live and work with it, and to help others who do too.</p>
+                <p>Diagnosed with Parkinson's Disease over 10 years ago. It is why every app here is built to work with unsteady hands, and why I know when one doesn't.</p>
+                <p>Agentic coding tools brought back the part of this job I loved most. Twenty-five years in, I am shipping more, and enjoying it more, than I have in a long time.</p>
                 <p>Born in Poland. Educated in Canada. Cut my teeth in Silicon Valley. Now building halfmarble from Charlottesville, Virginia.</p>
                 <p class="text-zinc-500 italic">Off the clock: hiking, kayaking, books and games, tinkering with microcontrollers, and love for the company of dogs.</p>
             </div>
@@ -645,20 +463,6 @@
     </style>
 
     <script>
-        // Trigger founders section animations when scrolled into view
-        const foundersSection = document.getElementById('founders');
-        if (foundersSection) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        foundersSection.classList.add('in-view');
-                        observer.unobserve(foundersSection); // fire once
-                    }
-                });
-            }, { threshold: 0.4 }); // trigger when 40% visible
-            observer.observe(foundersSection);
-        }
-
         function openBio(id) {
             document.getElementById(id).classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -675,35 +479,7 @@
                 document.body.style.overflow = '';
             }
         });
-
-        // Beta signup — posts URL-encoded to the Apps Script endpoint (no
-        // preflight; Apps Script cannot answer OPTIONS), then redirects.
-        (function () {
-            var form = document.getElementById('beta-form');
-            if (!form) return;
-            form.addEventListener('submit', function (ev) {
-                ev.preventDefault();
-                var btn = form.querySelector('button[type="submit"]');
-                var err = document.getElementById('beta-form-error');
-                var label = btn.textContent;
-                btn.disabled = true;
-                btn.textContent = 'SENDING...';
-                if (err) err.hidden = true;
-                fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form)) })
-                    .then(function (r) { return r.json(); })
-                    .then(function (data) {
-                        if (!data.ok) throw new Error(data.error || 'error');
-                        window.location.href = 'success.html';
-                    })
-                    .catch(function () {
-                        btn.disabled = false;
-                        btn.textContent = label;
-                        if (err) err.hidden = false;
-                    });
-            });
-        })();
     </script>
 
 </body>
 </html>
-
