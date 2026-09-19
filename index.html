@@ -360,18 +360,18 @@
             <a href="https://github.com/halfmarble/upMonitor" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">upmonitor (MIT)</a>
             <a href="https://github.com/halfmarble/hm-panelizer" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">hm_panelizer (MIT)</a>
             <a href="https://github.com/halfmarble/NEAToBOARD" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">NEAToBOARD (CERN-OHL-P-2.0)</a>
-
-            <!-- Manual 3+3 break. Six entries do not fit on one line inside max-w-6xl: the
-                 text alone measures 1044px against a 1104px container, so even closing the
-                 gap to 16px still overflows. Left to wrap naturally the sixth entry sits
-                 alone and centred, which reads as an afterthought rather than the newest
-                 project. This zero-height full-width flex item forces the break after the
-                 third instead. IT IS POSITIONAL: re-balance it when an entry is added,
-                 removed or renamed, or the split goes lopsided again. -->
-            <div class="basis-full" style="height:0;"></div>
             <a href="https://github.com/gerard-hm/SteadyHandTool" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">SteadyHandTool (CERN-OHL-S-2.0)</a>
+
+            <!-- Manual 4+3 break. Seven entries cannot share one line inside max-w-6xl: the
+                 text alone measures 1217px against a 1104px container. Left to wrap naturally
+                 the split is lopsided, so this zero-height full-width flex item forces it
+                 after the fourth entry. Measured at 1440px, gap 32px: 4+3 gives 751/626 (a
+                 125px difference), against 385px for 3+4 and 593px for 5+2. IT IS POSITIONAL:
+                 re-measure and move it whenever an entry is added, removed or renamed. -->
+            <div class="basis-full" style="height:0;"></div>
             <a href="https://github.com/halfmarble/SteadyHeartBeat" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">SteadyHeartBeat (Apache-2.0)</a>
             <a href="https://github.com/halfmarble/HalfmarbleKit" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">HalfmarbleKit (Apache-2.0)</a>
+            <a href="https://github.com/halfmarble/MathLexicon" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">MathLexicon (Apache-2.0)</a>
         </div>
 
         <!-- Kept as a SEPARATE row on purpose: these two are forks of someone else's work, not
