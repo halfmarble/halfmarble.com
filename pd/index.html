@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>halfmarble | Parkinson's research, sensing and open IP</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="/assets/fonts/fonts.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .accent { color: #eab308; }
+        .card { background: #111111; border: 1px solid #222; transition: border 0.3s ease; }
+        .card:hover { border-color: #444; }
+        .quote-bg { background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%); }
+    </style>
+    <!-- Tailwind, built from this page's own classes (not the CDN): see tailwind.config.js.
+         Keep this LAST in <head>, after the inline <style> above, so Tailwind wins cascade ties. -->
+    <link href="/assets/tailwind.css" rel="stylesheet">
+</head>
+<body class="antialiased">
+
+    <section class="px-6 py-20 text-center quote-bg border-b border-zinc-900">
+        <div class="max-w-3xl mx-auto">
+            <a href="/" class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] hover:text-zinc-400 transition">&larr; halfmarble</a>
+            <h1 class="mt-10 text-3xl md:text-5xl font-extrabold leading-tight tracking-tighter text-white">
+                Parkinson's, sensing<br>and the <span class="accent">open record</span>
+            </h1>
+            <p class="mt-8 text-zinc-400 text-base md:text-lg leading-relaxed">
+                halfmarble builds software for iPhone, iPad and Mac. This page holds the other half of the work: the Parkinson's research, the sensing hardware still in design, and the ideas we have published so no one can fence them off.
+            </p>
+            <p class="mt-6 text-zinc-600 text-sm leading-relaxed">
+                Everything here is positioned under the FDA 2019 General Wellness Policy. None of it diagnoses, treats or manages any disease, and none of it replaces your clinician.
+            </p>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-20 border-b border-zinc-900">
+        <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-10 text-center">
+            Start here <span class="accent">//</span> Two pages worth your time
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <a href="/research/" class="card block p-8">
+                <div class="mono text-xs text-zinc-600 uppercase tracking-widest mb-3">For researchers</div>
+                <div class="text-white text-lg font-bold mb-3">What we measure, and how</div>
+                <p class="text-zinc-500 text-sm leading-relaxed">Measurement scope, signal definitions and the limits we state up front. Written for people who will check the method.</p>
+            </a>
+            <a href="/glass-box/data.html" class="card block p-8">
+                <div class="mono text-xs uppercase tracking-widest mb-3" style="color:#D12C3B;">Glass Box</div>
+                <div class="text-white text-lg font-bold mb-3">Every field, every transformation</div>
+                <p class="text-zinc-500 text-sm leading-relaxed">What gets captured, what gets shared, and every "we will never." Documented in plain language.</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-12 text-center">
+            In design <span class="accent">//</span> Sensing and tracking
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+
+            <div class="space-y-16 self-start">
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Hardware // Design stage</div>
+                        <h3 class="text-4xl font-bold mb-6 text-blue-500">UnSteadyRing</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            Ten chipless passive rings, one per finger. Two wrist-worn hubs designed to excite them with passive RF telemetry and fuse the returned digit kinematics with continuous autonomic biometrics (single-lead ECG, PPG, skin temperature); an ankle hub for gait and freezing-of-gait. The Steady tools intervene &mdash; UnSteadyRing observes. Intended as the continuous, contextualized reference layer for everything else &mdash; sensing hardware is in early R&amp;D (design stage).
+                        </p>
+                        <div class="space-y-3 mb-12">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> 17 DEFENSIVE PROVISIONAL APPLICATIONS
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> 10 CHIPLESS PASSIVE FINGER RINGS
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> REFLECTED-WAVE TELEMETRY
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> AUTONOMIC PHYSIOLOGICAL SENSORS
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> PER-FINGER TREMOR QUANTIFICATION
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-blue-500 mr-3">&#9679;</span> ANKLE HUB &middot; GAIT &amp; FREEZING-OF-GAIT
+                            </div>
+                            <div class="mono text-[10px] text-blue-700 uppercase tracking-widest mt-3 pt-3 border-t border-zinc-800">Hardware design targets &mdash; no device built yet</div>
+                        </div>
+                    </div>
+                    <a href="/blog/unsteady-ring.html" class="block border border-blue-900/40 px-8 py-4 text-center mono text-sm text-blue-500 font-bold hover:bg-blue-500/10 transition duration-300 w-full">
+                        READ THE WRITE-UP
+                    </a>
+                    <a href="/unsteadyring/gait/" class="block border border-blue-900/30 px-8 py-3 text-center mono text-sm text-blue-700 font-bold hover:bg-blue-500/5 transition duration-300 mt-3 w-full">
+                        SEE THE GAIT DEMO
+                    </a>
+                </div>
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Software // In development</div>
+                        <h3 class="text-4xl font-bold mb-6 text-emerald-500">SteadyFuelTracker</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            A specialized metabolic intake engine designed around the Therapeutic Carbohydrate Restriction (TCR) guidelines championed by the Public Health Collaboration (PHC). This is not a diet app. It will be a macro-nutrient tracker that lets you log carbohydrate and protein timing relative to your levodopa doses and track your own nutritional ketosis, following TCR guidance.
+                        </p>
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-emerald-500 mr-3">&#9679;</span> TCR PROTOCOL ALIGNMENT (PHC)
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-emerald-500 mr-3">&#9679;</span> LEVODOPA / PROTEIN INTERFERENCE LOGGING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-emerald-500 mr-3">&#9679;</span> GLUCOSE &amp; KETONE (GKI) SYNCING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-emerald-500 mr-3">&#9679;</span> MACRO-TO-MOTOR STATE CORRELATION
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block border border-emerald-900/40 px-8 py-4 text-center mono text-sm text-emerald-600 font-bold w-full">
+                        IN DEVELOPMENT
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="space-y-16 self-start">
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Software // Demo</div>
+                        <h3 class="text-4xl font-bold mb-6 text-purple-500">SteadyDoseTracker</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            A pharmacokinetic visualizer that models the blood concentration curves of the medication schedule your doctor prescribed. Half-life math shows how your levels rise and fall in real-time &mdash; not to tell you what to take, but to help you and your clinician see what is already happening.
+                        </p>
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-purple-500 mr-3">&#9679;</span> BATEMAN PHARMACOKINETIC MODEL
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-purple-500 mr-3">&#9679;</span> FASTING-AWARE ABSORPTION
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-purple-500 mr-3">&#9679;</span> GLASS BOX SOURCE TRACING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-purple-500 mr-3">&#9679;</span> OBJECTIVE MOTOR TESTING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-purple-500 mr-3">&#9679;</span> CALENDAR &rarr; MOTOR DEMAND PREDICTION
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/steady_dose_tracker_demo.html" class="block border border-purple-900/40 px-8 py-4 text-center mono text-sm text-purple-500 font-bold hover:bg-purple-500/10 transition duration-300 w-full">
+                        SEE THE ENGINE
+                    </a>
+                </div>
+
+                <div class="card p-10 rounded-none">
+                    <div>
+                        <div class="mono text-xs mb-6 text-zinc-600 uppercase tracking-widest">Software // Demo</div>
+                        <h3 class="text-4xl font-bold mb-6 text-yellow-500">SteadyFastingTracker</h3>
+                        <p class="text-zinc-400 mb-8 leading-relaxed">
+                            A specialized fasting engine grounded in current autophagy research, with the sources traceable from every number it shows. Not a lifestyle app: a measurement tool you can check.
+                        </p>
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-yellow-500 mr-3">&#9679;</span> AUTOPHAGY-INFORMED PROTOCOLS
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-yellow-500 mr-3">&#9679;</span> THERAPEUTIC CARBOHYDRATE RESTRICTION (TCR)
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-yellow-500 mr-3">&#9679;</span> GLASS BOX SOURCE TRACING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-yellow-500 mr-3">&#9679;</span> GKI &amp; METABOLIC TRACKING
+                            </div>
+                            <div class="flex items-center text-sm mono text-zinc-500">
+                                <span class="text-yellow-500 mr-3">&#9679;</span> SAFETY CIRCLE &mdash; HUMAN-IN-THE-LOOP ESCALATION
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/steady_fasting_tracker_demo.html" class="block border border-yellow-900/40 px-8 py-4 text-center mono text-sm text-yellow-600 font-bold hover:bg-yellow-600/10 transition duration-300 w-full">
+                        SEE THE ENGINE
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="open-ip" class="max-w-4xl mx-auto px-6 py-24 border-t border-zinc-900">
+        <div class="text-center mb-12">
+            <div class="mono text-xs text-zinc-600 uppercase tracking-[0.3em] mb-6">
+                Open IP <span class="text-purple-500">//</span> What We Open, What We Protect
+            </div>
+            <p class="text-zinc-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                Steward, not owner &mdash; of data, and of ideas. The methods we want anyone to be free to use, we publish as dated, public-domain <span class="text-white">prior art</span>, so no one can fence them off later. The core sensing platform, we protect by filing.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="border border-zinc-800 p-8" style="background: linear-gradient(135deg, #111111 0%, #0f0f0f 100%);">
+                <div class="mono text-xs text-purple-700 uppercase tracking-[0.2em] mb-4">Published defensively <span class="text-zinc-600">//</span> Public domain</div>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+                    Defensive publications in the <a href="https://www.tdcommons.org/" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">Technical Disclosure Commons</a>, an examiner-searched prior-art database. Dated, public-domain, and freely practicable by anyone.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Consumer earbud as a closed-loop biometric sensor for exercise support &mdash; <a href="https://www.tdcommons.org/dpubs_series/10440" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10440</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Heart-rate-recovery-gated rest-interval timing through a consumer earbud &mdash; <a href="https://www.tdcommons.org/dpubs_series/10441" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10441</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Crediting recorded prior activity toward an exercise warm-up &mdash; <a href="https://www.tdcommons.org/dpubs_series/10439" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10439</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Robust overnight heart-rate-variability estimation independent of sleep staging &mdash; <a href="https://www.tdcommons.org/dpubs_series/10443" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10443</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Nap-level autonomic (HRV) tracking and a nap-day recovery comparison for daytime sleepiness in Parkinson's &mdash; <a href="https://www.tdcommons.org/dpubs_series/10454" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10454</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Active-sleep (dream-enactment) burden as a longitudinal self-tracking signal in movement-disordered sleep &mdash; <a href="https://www.tdcommons.org/dpubs_series/10455" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10455</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Per-session sleep onset latency as a two-tailed self-tracking signal in Parkinson's, across nights and naps &mdash; <a href="https://www.tdcommons.org/dpubs_series/10494" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10494</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Synchronized multi-line digital signal generation on an ESP32 (NEAToBOARD) &mdash; <a href="https://www.tdcommons.org/dpubs_series/10442" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10442</a></span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-purple-500 mr-3 flex-shrink-0">&bull;</span>
+                        <span>Opt-in comparison of a wearable biometric against population and disease-cohort distributions, computed on-device under differential privacy &mdash; <a href="https://www.tdcommons.org/dpubs_series/10495" target="_blank" rel="noopener" class="text-zinc-300 underline decoration-zinc-600 hover:decoration-zinc-300 transition">TDCommons 10495</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-zinc-800 p-8" style="background: linear-gradient(135deg, #111111 0%, #0f0f0f 100%);">
+                <div class="mono text-xs text-blue-700 uppercase tracking-[0.2em] mb-4">Protected by filing <span class="text-zinc-600">//</span> UnSteadyRing</div>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+                    The <strong class="text-zinc-300">UnSteadyRing</strong> wearable sensing platform &mdash; passive finger nodes read by wrist-worn hubs &mdash; is protected by <strong class="text-zinc-300">seventeen provisional patent applications</strong> filed with the USPTO in 2026, covering fine-motor and bioenergetic sensing across the hand, limbs, head, and ground interface.
+                </p>
+                <div class="space-y-2">
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
+                        <span>Reversed-topology finger sensing &mdash; inductive, fractal-resonant, magnetic, and RF-backscatter nodes</span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
+                        <span>Bilateral and lower-extremity telemetry; battery-free intra-body-powered rings</span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
+                        <span>Head-worn earbud-IMU neuromotor observation; striking-exercise biomarkers</span>
+                    </div>
+                    <div class="flex items-baseline text-sm text-zinc-400">
+                        <span class="text-blue-500 mr-3 flex-shrink-0">&rarr;</span>
+                        <span>Standing-platform multi-modal sensing &mdash; lean-mass-adjusted steadiness, autonomic&ndash;somatic and bioenergetic&ndash;neuromotor correlation, repeated-squat power decrement</span>
+                    </div>
+                </div>
+                <p class="text-zinc-600 text-xs leading-relaxed mt-6 italic">
+                    The <span class="not-italic">Un</span> prefix is intentional &mdash; UnSteadyRing observes; it does not intervene.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-zinc-900">
+        <div class="mono text-xs text-zinc-600 uppercase tracking-widest mb-4">halfmarble</div>
+        <p class="text-zinc-500 text-sm mb-6">Small software, built to last, by two people who use it.</p>
+        <a href="/" class="mono text-xs text-zinc-600 transition" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">&larr; Back to the apps</a>
+        <div class="mt-6">
+            <a href="mailto:info@halfmarble.com" class="inline-block text-zinc-500 font-bold" style="text-decoration:none;border-bottom:1px solid #444;" onmouseover="this.style.borderColor='#d1d5db'" onmouseout="this.style.borderColor='#444'">info@halfmarble.com</a>
+        </div>
+    </footer>
+
+</body>
+</html>

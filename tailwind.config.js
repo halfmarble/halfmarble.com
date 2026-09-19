@@ -1,4 +1,4 @@
-/* Tailwind build config for the four Tailwind-styled pages.
+/* Tailwind build config for the five Tailwind-styled pages.
  *
  * The site used to load https://cdn.tailwindcss.com (the Play CDN), which compiles in the
  * visitor's browser: ~400 KB of JS on every page view, and every visitor's IP handed to a
@@ -23,6 +23,7 @@ module.exports = {
     "./gallery.html",
     "./success.html",
     "./blog/unsteady-ring.html",
+    "./pd/index.html",
   ],
   theme: { extend: {} },
   plugins: [],
