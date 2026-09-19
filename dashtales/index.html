@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DashTales — the road-trip companion that works in the middle of nowhere</title>
+<meta name="description" content="Offline entertainment for family road trips. Books, games, stories and simple conversation, hands-free — and it works with zero bars, because everything lives on your phone.">
+<link rel="icon" type="image/png" href="app-icon.png">
+<link rel="apple-touch-icon" href="app-icon.png">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  /* This stylesheet IS the halfmarble product-page system, taken from
+     ../steadyheartbeat/index.html so the two are the same page in different
+     colours. Only the accent variable differs: DashTales is #7ab8d4, the colour its card
+     already uses on halfmarble.com. Do not drift from it — if the product pages change,
+     change this with them. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #d1d5db; line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  /* dash = DashTales product accent (#7ab8d4). pure red stays company-level. */
+  :root { --dash: #7ab8d4; --dash-dim: rgba(122,184,212,0.4); --dash-faint: rgba(122,184,212,0.08); --ok: #7ec8a5; }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  .top-nav { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; }
+  .top-nav-row { display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .nav-link { font-size: 12px; color: #666; text-decoration: none; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .nav-link:hover { border-color: var(--dash); }
+  .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; position: absolute; left: 50%; transform: translateX(-50%); }
+  .nav-logo img { width: 22px; height: 22px; filter: brightness(0) invert(1); opacity: 0.7; }
+  .nav-logo span { font-size: 11px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; }
+  .nav-logo:hover { border-color: var(--dash); }
+
+  /* hero */
+  .hero { text-align: center; padding: 48px 0 48px; border-bottom: 1px solid #1a1a1a; }
+  .app-icon { width: 118px; height: 118px; margin: 0 auto 26px; border-radius: 26px; box-shadow: 0 22px 60px -22px rgba(122,184,212,0.6), 0 0 0 1px rgba(255,255,255,0.06); animation: floaticon 6s ease-in-out infinite; }
+  @keyframes floaticon { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  /* Motion is opt-out, same as the other product pages. */
+  @media (prefers-reduced-motion: reduce) { .app-icon { animation: none; } }
+  .hero .label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.32em; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+  .hero .label .accent { color: var(--dash); font-weight: 700; }
+  .hero h1 { font-size: 46px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px; }
+  .hero h1 .nowhere { color: var(--dash); }
+  .hero p.sub { font-size: 17px; color: #9aa0a6; max-width: 640px; margin: 0 auto 14px; }
+  .hero p.req { font-size: 12px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 20px; }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+  .btn { display: inline-block; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 14px 28px; border: 1px solid var(--dash); background: var(--dash); color: #06222e; border-radius: 6px; transition: filter 0.2s, transform 0.06s; cursor: pointer; }
+  .btn:hover { filter: brightness(1.08); }
+  .btn:active { transform: translateY(1px); }
+  .btn.ghost { background: transparent; border-color: #333; color: #888; }
+  .btn.ghost:hover { background: #111; border-color: #555; color: #d1d5db; filter: none; }
+
+  /* sections */
+  section.block { margin: 68px 0; }
+  .section-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; text-align: center; }
+  .section-label .accent { color: var(--dash); }
+
+  /* feature grid */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .feature { background: #101012; border: 1px solid #1f1f23; border-radius: 12px; padding: 22px; transition: border-color 0.2s; }
+  .feature:hover { border-color: #3a3a40; }
+  .feature h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 7px; }
+  .feature h3 .dot { color: var(--dash); margin-right: 8px; font-size: 10px; }
+  .feature p { font-size: 13.5px; color: #8a9096; }
+
+  /* packs reuse .feature, with a price rail pinned to the bottom */
+  .packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .pack { display: flex; flex-direction: column; }
+  .pack .kind { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 12px; }
+  .pack h3 { font-size: 19px; font-weight: 800; color: var(--dash); margin-bottom: 10px; }
+  .pack p { margin-bottom: 20px; }
+  .pack .price-rail { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid #1f1f23; }
+  .pack .price { font-size: 20px; font-weight: 800; color: #fff; }
+  .pack .own { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ok); text-transform: uppercase; letter-spacing: 0.18em; }
+  .pack .btn { margin-top: 16px; text-align: center; }
+
+  /* callout box */
+  .callout { background: #0e0e10; border: 1px solid #1f1f23; border-radius: 12px; padding: 30px; }
+  .callout.dash { border-left: 3px solid var(--dash); }
+  .callout h2 { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .callout p { font-size: 15px; color: #9aa0a6; margin-bottom: 12px; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: #cbd0d5; font-weight: 700; }
+  .callout .flag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--dash); text-transform: uppercase; letter-spacing: 0.3em; display: block; margin-bottom: 10px; }
+
+  .pledge { max-width: 620px; margin: 0 auto; padding: 0 20px 4px; text-align: center; font-size: 12.5px; letter-spacing: 0.03em; line-height: 1.85; color: #7d838a; }
+  .pledge b { color: #cbd0d5; font-weight: 600; }
+
+  footer { padding: 60px 0; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 64px; }
+  .footer-label { font-size: 11px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 10px; }
+  .footer-text { font-size: 14px; color: #777; }
+  .footer-links { margin-top: 18px; display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; border-bottom: 1px solid #333; transition: border-color 0.2s, color 0.2s; }
+  .footer-links a:hover { border-color: #d1d5db; color: #aaa; }
+
+  /* modal */
+  dialog { border: 1px solid #1f1f23; background: #101012; color: #d1d5db; max-width: 430px; width: 92vw; padding: 30px; border-radius: 12px; }
+  dialog::backdrop { background: rgba(0,0,0,0.8); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  dialog h3 { font-size: 19px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  dialog p { font-size: 14px; color: #9aa0a6; margin-bottom: 20px; }
+
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="top-nav-row">
+    <a href="../index.html" class="nav-link">&larr; halfmarble.com</a>
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo/logo.png" alt="halfmarble">
+      <span>halfmarble</span>
+    </a>
+  </div>
+</div>
+
+<div class="container">
+
+  <header class="hero">
+    <img class="app-icon" src="app-icon.png" alt="DashTales app icon — an open road running toward a sunrise, with a spoken waveform above it">
+    <div class="label"><span class="accent">DASHTALES</span> &middot; iPhone app</div>
+    <h1>The road-trip companion<br><span class="nowhere">that works in the middle of nowhere.</span></h1>
+    <p class="sub">Offline entertainment for the whole car. Books, games, stories and simple conversation, hands-free &mdash; and it keeps working when your signal doesn't, because everything lives on your phone.</p>
+    <div class="cta-row">
+      <button class="btn" data-pack="waitlist" onclick="openDoor(this)">Coming soon</button>
+      <a class="btn ghost" href="../index.html">More from halfmarble</a>
+    </div>
+    <p class="req">Works with zero bars &middot; everything lives on your phone</p>
+    <p class="req">iPhone app &middot; in development &middot; details subject to change</p>
+  </header>
+
+  <section class="block">
+    <div class="callout dash">
+      <span class="flag">Under active development</span>
+      <p>DashTales is being built right now. Everything described on this page &mdash; features, packs, names and prices &mdash; is <strong>subject to change</strong>, and nothing is for sale yet.</p>
+      <p>This page collects nothing &mdash; no forms, no analytics, no tracking.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-label">How <span class="accent">//</span> it works</div>
+    <div class="features">
+      <div class="feature">
+        <h3><span class="dot">&#9679;</span>Pick your packs at home</h3>
+        <p>Download story, book, and game packs over Wi-Fi before you leave. Each pack is a curated little library your companion knows inside-out.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">&#9679;</span>Talk, hands-free</h3>
+        <p>Ask for a story about a dragon who's afraid of heights. Play a quick word game. Ask a simple follow-up. It talks back, not just plays audio.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">&#9679;</span>No signal? No difference.</h3>
+        <p>The brain and the packs live on your phone. National parks, mountain passes, the long empty stretch &mdash; your packs stay sharp the whole way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-label">Packs <span class="accent">//</span> buy once, keep forever</div>
+    <div class="packs">
+      <div class="feature pack">
+        <div class="kind">Pack &middot; 01 &middot; Kids</div>
+        <h3>Children's Stories</h3>
+        <p>Classic fairy tales retold for the back seat, plus made-to-order stories on request &mdash; your kid names the hero. Kids Mode is parental-gated and runs entirely offline.</p>
+        <div class="price-rail"><span class="price">$TBD</span><span class="own">Yours forever</span></div>
+        <button class="btn" data-pack="children-stories" onclick="openDoor(this)">Coming soon</button>
+      </div>
+      <div class="feature pack">
+        <div class="kind">Pack &middot; 02 &middot; Everyone</div>
+        <h3>Games</h3>
+        <p>A campaign you play out loud with the whole car, a text adventure you talk your way through, and quick car games like Twenty Questions &mdash; it can guess or you can. All hands-free, all offline.</p>
+        <div class="price-rail"><span class="price">$TBD</span><span class="own">In development</span></div>
+        <button class="btn" data-pack="games" onclick="openDoor(this)">Coming soon</button>
+      </div>
+    </div>
+    <p class="pledge" style="margin-top:22px;">No subscription. No expiring library. A pack is meant to be yours like a book is yours. <b>Pricing is not settled, so nothing here is a quote.</b></p>
+  </section>
+
+  <section class="block">
+    <div class="section-label">Honest <span class="accent">//</span> out loud</div>
+    <div class="callout dash">
+      <p><strong>Offline, DashTales switches to the brain that lives on your phone.</strong> Your packs stay sharp &mdash; your books, games, and stories are always with you. What changes: no live traffic, weather, news, or scores, and general questions get simpler answers. When it isn't sure, it says so.</p>
+      <p><strong>Kids Mode never uses the cloud.</strong> Voices in Kids Mode never leave the phone. Purchases and exit sit behind a parental gate.</p>
+    </div>
+  </section>
+
+  <p class="pledge" style="margin-top:56px;">DashTales is hands-free entertainment for passengers and stopped vehicles. It is not a driver-assistance, alertness, or safety product. Always follow local law and give the road your full attention.</p>
+
+  <p class="pledge" style="margin-top:28px;">5% of software net profits pledged:<br>2.5% to <b>Team&nbsp;Fox</b>, the grassroots fundraising program of The Michael J. Fox Foundation<br>2.5% to <a href="https://phcuk.org/" rel="noopener" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.3);"><b>Public Health Collaboration</b></a> (PHC)<br>halfmarble is an independent Team&nbsp;Fox third-party fundraiser.</p>
+
+</div>
+
+<footer>
+  <div class="footer-label">Halfmarble LLC</div>
+  <p class="footer-text">Small software, built to last, by two people who use it.</p>
+  <div class="footer-links">
+    <a href="../index.html">halfmarble.com</a>
+    <a id="contact-mail" href="#">Email us</a>
+  </div>
+</footer>
+
+<dialog id="door">
+  <h3>Not on sale yet.</h3>
+  <p>DashTales is in development &mdash; packs aren't available to buy or pre-order yet. Check back, or email us if you'd like to hear when it launches.</p>
+  <button class="btn ghost" type="button" onclick="closeDoor()">Close</button>
+</dialog>
+
+<script>
+const CONTACT_EMAIL = "gerard@halfmarble.com";
+document.getElementById("contact-mail").href = "mailto:" + CONTACT_EMAIL;
+
+const door = document.getElementById("door");
+function openDoor(btn){ door.showModal(); }
+function closeDoor(){ door.close(); }
+</script>
+</body>
+</html>

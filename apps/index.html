@@ -135,7 +135,7 @@
   <header class="hero">
     <div class="label">halfmarble <span class="accent">//</span> iOS apps</div>
     <h1>halfmarble on your iPhone.</h1>
-    <p class="sub">One wellness app and two games. Everything runs on your device, none of it tracks you, and all of it is built to work with unsteady hands.</p>
+    <p class="sub">One wellness app, two games and an offline road-trip companion. Everything runs on your device, none of it tracks you, and all of it is built to work with unsteady hands.</p>
     <a class="hero-check" href="#compat">Not sure your device can run these? Check first <span class="arr">&darr;</span></a>
   </header>
 
@@ -183,6 +183,19 @@
       <a class="cta" href="../stringfusor/">See the game &rarr;</a>
     </div>
 
+    <div class="app">
+      <div class="app-head">
+        <img src="../dashtales/app-icon.png" alt="DashTales app icon">
+        <h2>DashTales<span class="kind">iPhone app</span></h2>
+      </div>
+      <p>Offline entertainment for the whole car, hands-free. Books, games, stories and simple conversation &mdash; you talk to it, so no hands are involved. Everything lives on the phone, so it keeps working where there is no signal at all.</p>
+      <div class="status">
+        <span class="chip soon">In development &middot; details subject to change</span>
+      </div>
+      <p class="needs">Needs <b>iPhone 15 Pro or newer &middot; iOS 18+</b> &mdash; the AI runs on the phone’s own GPU</p>
+      <a class="cta" href="../dashtales/">See the app &rarr;</a>
+    </div>
+
   </section>
 
   <section class="check" id="compat">
@@ -197,16 +210,17 @@
           <select id="hmDevice">
             <option value="" selected>Choose a device&hellip;</option>
             <optgroup label="iPhone">
-              <option value="phone:26">iPhone 17 &middot; Air &middot; 17e</option>
-              <option value="phone:26">iPhone 16 &middot; 16e</option>
-              <option value="phone:26">iPhone 15</option>
-              <option value="phone:26">iPhone 14</option>
-              <option value="phone:26">iPhone 13</option>
-              <option value="phone:26">iPhone 12</option>
-              <option value="phone:26">iPhone 11</option>
-              <option value="phone:26">iPhone SE &middot; 2nd or 3rd gen</option>
-              <option value="phone:18.6">iPhone XR &middot; XS &middot; XS Max</option>
-              <option value="phone:0">iPhone X &middot; 8 &middot; SE 1st gen &middot; older</option>
+              <option value="phone:26:1">iPhone 17 &middot; Air &middot; 17e</option>
+              <option value="phone:26:1">iPhone 16 &middot; 16e</option>
+              <option value="phone:26:1">iPhone 15 Pro &middot; 15 Pro Max</option>
+              <option value="phone:26:0">iPhone 15 &middot; 15 Plus</option>
+              <option value="phone:26:0">iPhone 14</option>
+              <option value="phone:26:0">iPhone 13</option>
+              <option value="phone:26:0">iPhone 12</option>
+              <option value="phone:26:0">iPhone 11</option>
+              <option value="phone:26:0">iPhone SE &middot; 2nd or 3rd gen</option>
+              <option value="phone:18.6:0">iPhone XR &middot; XS &middot; XS Max</option>
+              <option value="phone:0:0">iPhone X &middot; 8 &middot; SE 1st gen &middot; older</option>
             </optgroup>
             <optgroup label="iPad">
               <option value="pad:26">iPad Pro &middot; 2018 or newer</option>
@@ -276,18 +290,28 @@
         </div>
         <div class="r-mark" aria-hidden="true">&mdash;</div>
       </div>
+
+      <div class="result" data-min="18" data-fam="phone" data-pods="0" data-ai="1">
+        <img src="../dashtales/app-icon.png" alt="">
+        <div class="r-main">
+          <h3>DashTales</h3>
+          <p class="r-req">iPhone 15 Pro or newer &middot; iOS 18+ &middot; in development</p>
+          <p class="r-msg">Pick your device above to check.</p>
+        </div>
+        <div class="r-mark" aria-hidden="true">&mdash;</div>
+      </div>
     </div>
 
-    <p class="hint">Pick the family &mdash; Plus, mini, Pro and Pro Max all take the same iOS as the base model. Device support follows Apple's own compatibility lists for iOS&nbsp;17, 18 and 26. If your device is not listed, it is older than anything these apps run on.</p>
+    <p class="hint">Pick the family &mdash; Plus, mini, Pro and Pro Max all take the same iOS as the base model, so they share a line here. The iPhone&nbsp;15 is the exception: only the Pro models have the memory to run AI on the phone itself, so they are listed apart. Device support follows Apple's own compatibility lists for iOS&nbsp;17, 18 and 26. If your device is not listed, it is older than anything these apps run on.</p>
   </section>
 
-  <p class="stance">All three are <b>local-first</b>: no accounts, no ads, no analytics, no third-party SDKs. What happens on your device stays on your device.</p>
+  <p class="stance">All four are <b>local-first</b>: no accounts, no ads, no analytics, no third-party SDKs. What happens on your device stays on your device.</p>
 
 </div>
 
 <footer>
   <div class="footer-label">Halfmarble LLC</div>
-  <p class="footer-text">Engineering for the unbridgeable difference.</p>
+  <p class="footer-text">Small software, built to last, by two people who use it.</p>
   <div class="footer-links">
     <a href="../index.html">halfmarble.com</a>
     <a href="../steadyheartbeat/">SteadyHeartBeat</a>
@@ -323,7 +347,12 @@
   function parseDev() {
     if (!dev.value) return null;
     var bits = dev.value.split(':');
-    return { fam: bits[0], max: parseFloat(bits[1]) };
+    /* Third field: can this model run a multi-billion-parameter model on its own GPU?
+       That needs an 8 GB device (A17 Pro or newer), which is also Apple's own floor for
+       on-device AI. Only the iPhone options carry it — the one app that asks for it is
+       iPhone-only, and the iPad rows are grouped across chip generations too coarsely to
+       answer honestly. Missing field reads as 0, which is what the iPad groups want. */
+    return { fam: bits[0], max: parseFloat(bits[1]), ai: bits[2] === '1' };
   }
 
   function osName(fam) { return fam === 'pad' ? 'iPadOS' : 'iOS'; }
@@ -356,6 +385,7 @@
       var min  = parseFloat(row.getAttribute('data-min'));
       var fams = row.getAttribute('data-fam').split(' ');
       var needsPods = row.getAttribute('data-pods') === '1';
+      var needsAI   = row.getAttribute('data-ai') === '1';
       var state = '', mark = '—', msg = 'Pick your device above to check.';
 
       if (d) {
@@ -368,6 +398,10 @@
             ? 'This model is older than anything these apps run on.'
             : 'Needs ' + osName(d.fam) + ' ' + min + ', and this model does not go past '
               + osName(d.fam) + ' ' + d.max + '.';
+        } else if (needsAI && !d.ai) {
+          state = 'no';  mark = '✕';
+          msg = 'This one runs its own AI on the phone\u2019s GPU, so it needs '
+              + 'an iPhone 15 Pro or newer. Your model does not have the memory for it.';
         } else if (installed !== null && installed < min) {
           state = 'upd'; mark = '!';
           msg = 'Almost. Update to ' + osName(d.fam) + ' ' + min
