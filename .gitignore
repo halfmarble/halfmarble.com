@@ -17,9 +17,6 @@ node_modules/
 dist/
 build/
 
-# Local-only Claude Code guidance (canonical copy lives in halfmarble.closed/)
-CLAUDE.md
-
 # ViroFlick media — the site ships the sized .jpg screenshots, the poster, and the
 # one small self-hosted gameplay loop (media/loop-*.mp4, a couple of MB). The heavy
 # source assets stay local: the multi-GB .mp4 capture archive and the intermediate
