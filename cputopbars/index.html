@@ -50,6 +50,7 @@
   .chip { display: inline-block; padding: 3px 8px; border-radius: 5px; margin: 0 4px 6px; }
   .chip.now { color: #75db5c; border: 1px solid rgba(117,219,92,0.4); }
   .chip.soon { color: #cbb48c; border: 1px solid #2a2a30; }
+  .hero p.req { font-size: 12px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 20px; }
   .ctas { margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
   .btn { display: inline-block; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 14px 24px; border-radius: 6px; transition: filter 0.2s, background 0.2s, border-color 0.2s; }
   .btn.solid { background: var(--acc); border: 1px solid var(--acc); color: #1a0d00; }
@@ -138,12 +139,15 @@
     <p class="sub">A small, live graph in your menu bar: CPU and every core, GPU, Neural Engine, memory, disk, battery and Wi-Fi. Click it for your top processes and a panel of readings. Everything is read on your Mac, and nothing is sent anywhere. If you keep the macOS Battery and Wi-Fi menu-bar items only to check their status, its battery and Wi-Fi bars can stand in for them (without their controls), so you can hide those and free up space in your menu bar.</p>
     <div class="chips">
       <span class="chip now">Free &middot; open source (MIT)</span>
-      <span class="chip soon">Coming to the Mac App Store</span>
+      <span class="chip now">Open beta &middot; TestFlight</span>
+      <span class="chip soon">Mac App Store release to follow</span>
     </div>
     <div class="ctas">
-      <a class="btn solid" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Source on GitHub &#8599;</a>
+      <a class="btn solid" href="https://testflight.apple.com/join/uQMR5R8t" target="_blank" rel="noopener">Join the beta on TestFlight &#8599;</a>
+      <a class="btn ghost" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Source on GitHub &#8599;</a>
       <a class="btn ghost" href="#see">See it &darr;</a>
     </div>
+    <p class="req">Free beta &middot; open the link on your Mac &middot; installs through Apple&rsquo;s TestFlight app</p>
   </header>
 
   <!-- ============ SEE IT ============ -->
@@ -221,17 +225,19 @@
           <li>Ranks every user's processes, system daemons and WindowServer included.</li>
           <li>The inspector adds lsof, nm and sample tabs, and a Kill button for your own processes.</li>
           <li>Shows the Neural Engine's busy share and the GPU's power in watts, where they can be read.</li>
-          <li>Runs outside the App Sandbox. Instructions are in the <a href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">README</a>.</li>
+          <li>Runs outside the App Sandbox.</li>
+          <li>To install: clone the <a href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">repository</a>, open cpuTopBars.xcodeproj in Xcode and choose Product &gt; Run. The graph appears in your menu bar. The <a href="https://github.com/halfmarble/cpuTopBars#-installation" target="_blank" rel="noopener">README</a> has the details.</li>
         </ul>
       </div>
       <div class="way" style="--cc:var(--acc)">
         <h3>From the Mac App Store</h3>
-        <span class="tag">Free &middot; coming soon</span>
+        <span class="tag">Free &middot; open beta on TestFlight now</span>
         <ul>
+          <li>Try it now: get Apple&rsquo;s free TestFlight app from the Mac App Store, then open <a href="https://testflight.apple.com/join/uQMR5R8t" target="_blank" rel="noopener">the beta&rsquo;s TestFlight link</a> on your Mac and install it from TestFlight.</li>
           <li>Ranks your own processes and counts the others in one row.</li>
           <li>The inspector shows the man page, arguments and environment.</li>
           <li>Shows the Neural Engine as on or off, and the GPU's use.</li>
-          <li>Runs in the App Sandbox, signed and updated through the App Store.</li>
+          <li>Runs in the App Sandbox. TestFlight installs and updates the beta; the App Store will update the released app.</li>
         </ul>
       </div>
     </div>
