@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>halfmarble | cpuTopBars, your Mac's load in the menu bar</title>
+<meta name="description" content="cpuTopBars is a free, open-source menu-bar monitor for the Mac: live bars for CPU, cores, GPU, Neural Engine, memory, disk, battery and Wi-Fi, and your top processes one click away. Everything is read on your Mac; nothing is sent.">
+<meta property="og:title" content="cpuTopBars, your Mac's load in the menu bar">
+<meta property="og:description" content="A free, open-source (MIT) menu-bar monitor for the Mac. Everything is read on your Mac; nothing is sent.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="app-icon.png">
+<link rel="apple-touch-icon" href="app-icon.png">
+<link href="/assets/fonts/fonts.css" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: 'Inter', sans-serif; background: #0a0a0a; color: #d1d5db; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+
+  /* cpuTopBars accent: the orange of the icon's middle bar */
+  :root { --acc: #f08a3c; --acc-dim: rgba(240,138,60,0.42); --acc-faint: rgba(240,138,60,0.08); }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  /* nav */
+  .top-nav { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; }
+  .top-nav-row { display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .nav-link { font-size: 12px; color: #666; text-decoration: none; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+  .nav-link:hover { border-color: var(--acc); color: #aaa; }
+  .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; position: absolute; left: 50%; transform: translateX(-50%); }
+  .nav-logo img { width: 22px; height: 22px; filter: brightness(0) invert(1); opacity: 0.7; }
+  .nav-logo span { font-size: 11px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; }
+  .nav-logo:hover { border-color: var(--acc); }
+
+  /* hero */
+  .hero { text-align: center; padding: 48px 0 40px; border-bottom: 1px solid #1a1a1a; }
+  .app-icon { width: 128px; height: 128px; margin: 0 auto 22px; }
+  .hero .label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.32em; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+  .hero .label .accent { color: var(--acc); font-weight: 700; }
+  .hero h1 { font-size: 46px; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px; }
+  .hero h1 .hl { color: var(--acc); }
+  .hero p.sub { font-size: 17px; color: #9aa0a6; max-width: 640px; margin: 0 auto 14px; }
+  .chips { margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .chip { display: inline-block; padding: 3px 8px; border-radius: 5px; margin: 0 4px 6px; }
+  .chip.now { color: #75db5c; border: 1px solid rgba(117,219,92,0.4); }
+  .chip.soon { color: #cbb48c; border: 1px solid #2a2a30; }
+  .ctas { margin-top: 18px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 14px 24px; border-radius: 6px; transition: filter 0.2s, background 0.2s, border-color 0.2s; }
+  .btn.solid { background: var(--acc); border: 1px solid var(--acc); color: #1a0d00; }
+  .btn.solid:hover { filter: brightness(1.08); }
+  .btn.ghost { border: 1px solid #333; color: #d1d5db; }
+  .btn.ghost:hover { border-color: #555; background: #16161a; }
+
+  /* section scaffolding */
+  section.block { margin: 64px 0; }
+  .section-label { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; text-align: center; }
+  .section-label .accent { color: var(--acc); }
+  .section-sub { text-align: center; color: #8a9096; font-size: 15px; max-width: 600px; margin: 0 auto 30px; }
+
+  /* screenshots: real captures, shown at their own size (2x pixels, half in CSS) */
+  .shot { margin: 0 auto 34px; display: flex; flex-direction: column; align-items: center; }
+  .shot img { border-radius: 10px; box-shadow: 0 30px 70px -36px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.06); }
+  .shot.bar img { border-radius: 6px; }
+  .shot figcaption, .hover figcaption { margin-top: 11px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #7d838a; max-width: 640px; }
+  .hovers { display: flex; flex-wrap: wrap; gap: 26px 22px; justify-content: center; align-items: flex-start; }
+  .hover { margin: 0; display: flex; flex-direction: column; align-items: center; }
+  .hover img { border-radius: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,0.06); }
+
+  /* features */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .feature { background: #101012; border: 1px solid #1f1f23; border-radius: 12px; padding: 22px; transition: border-color 0.2s; }
+  .feature:hover { border-color: #3a3a40; }
+  .feature h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 7px; display: flex; align-items: center; gap: 9px; }
+  .feature h3 .dot { color: var(--acc); font-size: 10px; }
+  .feature p { font-size: 13.5px; color: #8a9096; }
+
+  /* two ways to get it */
+  .ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .way { background: #101012; border: 1px solid #1f1f23; border-top: 3px solid var(--cc, #333); border-radius: 12px; padding: 22px; }
+  .way h3 { font-size: 17px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .way .tag { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7d838a; margin-bottom: 12px; }
+  .way ul { list-style: none; }
+  .way li { font-size: 13.5px; color: #8a9096; padding-left: 16px; position: relative; margin-bottom: 6px; }
+  .way li::before { content: "·"; position: absolute; left: 4px; color: var(--cc, #666); font-weight: 900; }
+  .way a { color: #cbd0d5; }
+
+  /* callout */
+  .callout { background: #0e0e10; border: 1px solid #1f1f23; border-left: 3px solid var(--acc); border-radius: 12px; padding: 28px; }
+  .callout h2 { font-size: 21px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .callout p { font-size: 15px; color: #9aa0a6; margin-bottom: 12px; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout a { color: var(--acc); text-decoration: none; border-bottom: 1px solid var(--acc-dim); transition: border-color 0.2s; }
+  .callout a:hover { border-color: var(--acc); }
+  .callout.sib { border-left-color: #4aa3f0; display: flex; gap: 20px; align-items: center; }
+  .callout.sib img { width: 72px; height: 72px; flex-shrink: 0; }
+  .callout.sib a { color: #4aa3f0; border-bottom-color: rgba(74,163,240,0.42); }
+
+  .pledge { max-width: 620px; margin: 0 auto; padding: 0 20px 4px; text-align: center; font-size: 12.5px; letter-spacing: 0.03em; line-height: 1.85; color: #7d838a; }
+  .pledge b { color: #cbd0d5; font-weight: 600; }
+
+  footer { padding: 60px 0; text-align: center; border-top: 1px solid #1a1a1a; margin-top: 64px; }
+  .footer-label { font-size: 11px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 10px; }
+  .footer-text { font-size: 14px; color: #777; }
+  .footer-links { margin-top: 18px; display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: #666; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; border-bottom: 1px solid #333; transition: border-color 0.2s, color 0.2s; }
+  .footer-links a:hover { border-color: #d1d5db; color: #aaa; }
+
+  @media (max-width: 720px) {
+    .hero h1 { font-size: 34px; }
+    .callout.sib { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="top-nav-row">
+    <a href="../apps/" class="nav-link">&larr; apps</a>
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo/logo.png" alt="halfmarble">
+      <span>halfmarble</span>
+    </a>
+  </div>
+</div>
+
+<div class="container">
+
+  <header class="hero">
+    <img class="app-icon" src="app-icon.png" width="128" height="128" alt="cpuTopBars app icon: four bars of colored segments on a white grid">
+    <div class="label"><span class="accent">CPUTOPBARS</span> &middot; Mac menu-bar app</div>
+    <h1>Your Mac's load,<br><span class="hl">at a glance.</span></h1>
+    <p class="sub">A small, live graph in your menu bar: CPU and every core, GPU, Neural Engine, memory, disk, battery and Wi-Fi. Click it for your top processes and a panel of readings. Everything is read on your Mac, and nothing is sent anywhere. If you keep the macOS Battery and Wi-Fi menu-bar items only to check their status, its battery and Wi-Fi bars can stand in for them (without their controls), so you can hide those and free up space in your menu bar.</p>
+    <div class="chips">
+      <span class="chip now">Free &middot; open source (MIT)</span>
+      <span class="chip soon">Coming to the Mac App Store</span>
+    </div>
+    <div class="ctas">
+      <a class="btn solid" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Source on GitHub &#8599;</a>
+      <a class="btn ghost" href="#see">See it &darr;</a>
+    </div>
+  </header>
+
+  <!-- ============ SEE IT ============ -->
+  <section class="block" id="see">
+    <div class="section-label">See it <span class="accent">//</span> straight from the app</div>
+    <p class="section-sub">Real captures on a dark menu bar. Each bar has its letter under it: B battery, W Wi-Fi, D disk, M memory, N Neural Engine, G GPU, C CPU, E and P the efficiency and performance cores.</p>
+
+    <figure class="shot bar">
+      <img src="media/menubar.png" width="416" height="34" alt="The cpuTopBars graph in the macOS menu bar, beside the clock: a red battery bar, full, with its bolt (at 100%, on battery), Wi-Fi, disk and memory bars, then Neural Engine, GPU and CPU bars, then efficiency-core and performance-core bars, each lettered underneath">
+      <figcaption>Hiding in the menu bar</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="media/settings-readings-processes.png" width="1540" height="628" alt="Three panels side by side: cpuTopBars Settings with a live demo of the graph, refresh rate, number of processes and switches for each group of bars; a readings panel with uptime, battery, Wi-Fi, disk, memory, Neural Engine, GPU and CPU; and the menu listing the top processes by CPU with, for your own processes, their memory, then Activity Monitor, Freeze, Settings, How to Read the Menu Bar, Support Team Fox and About" loading="lazy">
+      <figcaption>Settings, the readings panel and the process menu, as built from source</figcaption>
+    </figure>
+  </section>
+
+  <section class="block">
+    <div class="section-label">Hover <span class="accent">//</span> for the numbers</div>
+    <p class="section-sub">Rest the pointer on a bar for a second and its reading appears below the menu bar.</p>
+    <div class="hovers">
+      <figure class="hover"><img src="media/hover-battery.png" width="258" height="79" alt="Battery label: charge and whether it is charging" loading="lazy"><figcaption>Battery</figcaption></figure>
+      <figure class="hover"><img src="media/hover-wifi.png" width="274" height="191" alt="Wi-Fi label: signal, then IP address, router and MAC address (blacked out), security, channel, noise, transmit rate and PHY mode" loading="lazy"><figcaption>Wi-Fi</figcaption></figure>
+      <figure class="hover"><img src="media/hover-disk.png" width="370" height="79" alt="Disk label: startup volume use with free and used space" loading="lazy"><figcaption>Disk</figcaption></figure>
+      <figure class="hover"><img src="media/hover-memory.png" width="502" height="79" alt="Memory label: memory in use with free, used and swapped memory" loading="lazy"><figcaption>Memory</figcaption></figure>
+      <figure class="hover"><img src="media/hover-neural-engine.png" width="195" height="79" alt="Neural Engine label: its busy share, as built from source" loading="lazy"><figcaption>Neural Engine, built from source</figcaption></figure>
+      <figure class="hover"><img src="media/hover-gpu.png" width="175" height="79" alt="GPU label: the GPU's use" loading="lazy"><figcaption>GPU</figcaption></figure>
+      <figure class="hover"><img src="media/hover-cpu.png" width="436" height="79" alt="CPU label: overall use with efficiency and performance cores' use" loading="lazy"><figcaption>CPU</figcaption></figure>
+      <figure class="hover"><img src="media/hover-e-cores.png" width="204" height="135" alt="Efficiency cores label: each core's load" loading="lazy"><figcaption>Efficiency cores</figcaption></figure>
+      <figure class="hover"><img src="media/hover-p-cores.png" width="240" height="135" alt="Performance cores label: each core's load" loading="lazy"><figcaption>Performance cores</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="block">
+    <div class="section-label">What's <span class="accent">//</span> inside</div>
+    <div class="features">
+      <div class="feature">
+        <h3><span class="dot">●</span>A live graph, not a number</h3>
+        <p>Bars for the battery, Wi-Fi, disk, memory, Neural Engine, GPU and CPU, then one for each core. Choose 2, 5 or 10 updates a second, and switch any group of bars off in Settings.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">●</span>Top processes, one click away</h3>
+        <p>Your busiest processes ranked by CPU, each with its share and, for your own processes, its memory. Freeze the list to read it while the graph keeps running.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">●</span>A panel of readings</h3>
+        <p>Open the menu and a panel beside it shows uptime, battery, Wi-Fi signal, disk, memory with swap, GPU, Neural Engine and CPU by core type.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">●</span>A process inspector</h3>
+        <p>Click a process to see its man page, where it has one, and its arguments and environment. Activity Monitor is one click away too.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">●</span>Room in your menu bar</h3>
+        <p>If you keep the Battery and Wi-Fi items only to check their status, these bars can take their place. They have none of those items' controls, and they do not show the network's name.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="dot">●</span>Explains itself</h3>
+        <p>"How to Read the Menu Bar" opens a window that explains every bar and color with drawn examples. Settings opens with a live demo of the graph.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TWO WAYS ============ -->
+  <section class="block">
+    <div class="section-label">Two ways <span class="accent">//</span> to get it</div>
+    <p class="section-sub">The same code, built two ways. The App Store asks every app to run in its sandbox, and the sandbox limits what an app may see of other processes.</p>
+    <div class="ways">
+      <div class="way" style="--cc:#75db5c">
+        <h3>Build it from source</h3>
+        <span class="tag">Free &middot; MIT &middot; available now</span>
+        <ul>
+          <li>Ranks every user's processes, system daemons and WindowServer included.</li>
+          <li>The inspector adds lsof, nm and sample tabs, and a Kill button for your own processes.</li>
+          <li>Shows the Neural Engine's busy share and the GPU's power in watts, where they can be read.</li>
+          <li>Runs outside the App Sandbox. Instructions are in the <a href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">README</a>.</li>
+        </ul>
+      </div>
+      <div class="way" style="--cc:var(--acc)">
+        <h3>From the Mac App Store</h3>
+        <span class="tag">Free &middot; coming soon</span>
+        <ul>
+          <li>Ranks your own processes and counts the others in one row.</li>
+          <li>The inspector shows the man page, arguments and environment.</li>
+          <li>Shows the Neural Engine as on or off, and the GPU's use.</li>
+          <li>Runs in the App Sandbox, signed and updated through the App Store.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:22px;margin-bottom:0;font-size:13px;">Both need <b style="color:#cbd0d5;font-weight:600;">macOS 27 or later</b>.</p>
+  </section>
+
+  <!-- ============ SIBLING ============ -->
+  <section class="block">
+    <div class="callout sib">
+      <img src="../devtopbars/app-icon.png" width="72" height="72" alt="devTopBars app icon">
+      <div>
+        <h2>Want more? devTopBars</h2>
+        <p>devTopBars is the paid app built on cpuTopBars. It adds usage bars for an AI coding plan's limits and live sessions, LAN, WAN and VPN address rows, and a way to keep your Mac awake while a chosen process runs. <a href="../devtopbars/">See devTopBars &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <section class="block">
+    <div class="callout">
+      <h2>Read on your Mac, kept on your Mac</h2>
+      <p>cpuTopBars makes no network requests. Every reading comes from your Mac itself; there are no accounts, no analytics and no third-party code. The one link out, "Support Team Fox", opens a page in your browser only when you choose it.</p>
+      <p>The full source is on <a href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">GitHub</a>, so you can check every line. It is the same local-first stance behind everything halfmarble builds; see the <a href="../glass-box/data.html">Glass Box</a>.</p>
+    </div>
+  </section>
+
+  <p class="pledge">5% of software net profits pledged:<br>2.5% to <b>Team&nbsp;Fox</b>, the grassroots fundraising program of The Michael J. Fox Foundation<br>2.5% to <a href="https://phcuk.org/" rel="noopener" style="color:inherit; text-decoration:underline; text-decoration-color:rgba(255,255,255,0.3);"><b>Public Health Collaboration</b></a> (PHC)<br>halfmarble is an independent Team&nbsp;Fox third-party fundraiser.</p>
+
+</div>
+
+<footer>
+  <div class="footer-label">Halfmarble LLC</div>
+  <p class="footer-text">Small software, built to last, by two people who use it.</p>
+  <div class="footer-links">
+    <a href="../index.html">halfmarble.com</a>
+    <a href="../apps/">Apps</a>
+    <a href="../devtopbars/">devTopBars</a>
+    <a href="https://github.com/halfmarble/cpuTopBars">GitHub</a>
+    <a href="mailto:support@halfmarble.com">support@halfmarble.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

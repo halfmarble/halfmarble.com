@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>halfmarble | iOS apps</title>
-<meta name="description" content="halfmarble's apps for iPhone and iPad: SteadyHeartBeat speaks your live heart rate from AirPods Pro 3, and two casual games — ViroFlick and StringFusor — built to be playable with unsteady hands.">
-<meta property="og:title" content="halfmarble — iOS apps">
-<meta property="og:description" content="SteadyHeartBeat, ViroFlick, and StringFusor. Everything runs on your device, and none of it tracks you.">
+<title>halfmarble | apps</title>
+<meta name="description" content="halfmarble's apps for iPhone, iPad and Mac: SteadyHeartBeat speaks your live heart rate from AirPods Pro 3, two casual games — ViroFlick and StringFusor — built to be playable with unsteady hands, and the cpuTopBars and devTopBars menu-bar monitors for the Mac.">
+<meta property="og:title" content="halfmarble — apps">
+<meta property="og:description" content="SteadyHeartBeat, ViroFlick, StringFusor, cpuTopBars and devTopBars. Everything runs on your device, and none of it tracks you.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link href="/assets/fonts/fonts.css" rel="stylesheet">
@@ -68,6 +68,11 @@
   .app .cta + .cta { margin-top: 8px; }
   .app .cta.store { color: #75db5c; border-color: rgba(117,219,92,0.4); }
   .app .cta.store:hover { border-color: #75db5c; background: rgba(117,219,92,0.06); }
+
+  /* platform groups */
+  .group-label { margin: 56px 0 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #666; }
+  .group-label .accent { color: #eab308; }
+  .group-label + .apps { margin-top: 20px; }
 
   /* the shared stance, one line */
   .stance { max-width: 620px; margin: 44px auto 0; text-align: center; font-size: 13.5px; color: #7d838a; }
@@ -136,12 +141,13 @@
 <div class="container">
 
   <header class="hero">
-    <div class="label">halfmarble <span class="accent">//</span> iOS apps</div>
-    <h1>halfmarble on your iPhone.</h1>
-    <p class="sub">One wellness app, two games and an offline road-trip companion. Everything runs on your device, none of it tracks you, and all of it is built to work with unsteady hands.</p>
-    <a class="hero-check" href="#compat">Not sure your device can run these? Check first <span class="arr">&darr;</span></a>
+    <div class="label">halfmarble <span class="accent">//</span> apps</div>
+    <h1>halfmarble on your iPhone and Mac.</h1>
+    <p class="sub">For iPhone: one wellness app, two games and an offline road-trip companion, all built to work with unsteady hands. For the Mac: a menu-bar monitor, free or paid. Everything runs on your device, and none of it tracks you.</p>
+    <a class="hero-check" href="#compat">Not sure your iPhone or iPad can run these? Check first <span class="arr">&darr;</span></a>
   </header>
 
+  <div class="group-label">iPhone <span class="accent">&amp;</span> iPad</div>
   <section class="apps">
 
     <div class="app">
@@ -201,9 +207,42 @@
 
   </section>
 
+  <div class="group-label">Mac</div>
+  <section class="apps">
+
+    <div class="app">
+      <div class="app-head">
+        <img src="../cputopbars/app-icon.png" alt="cpuTopBars app icon">
+        <h2>cpuTopBars<span class="kind">Mac menu-bar app</span></h2>
+      </div>
+      <p>Your Mac's load at a glance: live bars in the menu bar for CPU and every core, GPU, Neural Engine, memory, disk, battery and Wi-Fi, with your top processes one click away. Read on your Mac; nothing is sent.</p>
+      <div class="status">
+        <span class="chip now">Free &middot; open source (MIT)</span>
+        <span class="chip soon">Coming to the Mac App Store</span>
+      </div>
+      <p class="needs">Needs <b>Mac &middot; macOS 27+</b></p>
+      <a class="cta" href="../cputopbars/">See the app &rarr;</a>
+      <a class="cta" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Source on GitHub &#8599;</a>
+    </div>
+
+    <div class="app">
+      <div class="app-head">
+        <img src="../devtopbars/app-icon.png" alt="devTopBars app icon">
+        <h2>devTopBars<span class="kind">Mac menu-bar app</span></h2>
+      </div>
+      <p>The paid app built on cpuTopBars. Everything it shows, plus bars for an AI coding plan's usage limits and each live session, LAN, WAN and VPN address rows, and a way to keep your Mac awake while a job runs.</p>
+      <div class="status">
+        <span class="chip soon">Paid &middot; coming to the Mac App Store</span>
+      </div>
+      <p class="needs">Needs <b>Mac &middot; macOS 27+</b></p>
+      <a class="cta" href="../devtopbars/">See the app &rarr;</a>
+    </div>
+
+  </section>
+
   <section class="check" id="compat">
     <div class="eyebrow">Before you download</div>
-    <h2>Will these run on your device?</h2>
+    <h2>Will the iPhone and iPad apps run on your device?</h2>
     <p class="lede">Pick your device and the iOS version you are on. Nothing is sent anywhere &mdash; this runs entirely in your browser. Not sure which iOS you have? It is in <b>Settings &rsaquo; General &rsaquo; About &rsaquo; Software Version</b>.</p>
 
     <div class="check-form">
@@ -308,7 +347,7 @@
     <p class="hint">Pick the family &mdash; Plus, mini, Pro and Pro Max all take the same iOS as the base model, so they share a line here. The iPhone&nbsp;15 is the exception: only the Pro models have the memory to run AI on the phone itself, so they are listed apart. Device support follows Apple's own compatibility lists for iOS&nbsp;17, 18 and 26. If your device is not listed, it is older than anything these apps run on.</p>
   </section>
 
-  <p class="stance">All four are <b>local-first</b>: no accounts, no ads, no analytics, no third-party SDKs. What happens on your device stays on your device.</p>
+  <p class="stance">All six are <b>local-first</b>: no accounts, no ads, no analytics, no third-party SDKs. What happens on your device stays on your device.</p>
 
 </div>
 
@@ -320,6 +359,8 @@
     <a href="../steadyheartbeat/">SteadyHeartBeat</a>
     <a href="../viroflick/">ViroFlick</a>
     <a href="../stringfusor/">StringFusor</a>
+    <a href="../cputopbars/">cpuTopBars</a>
+    <a href="../devtopbars/">devTopBars</a>
     <a href="mailto:info@halfmarble.com">info@halfmarble.com</a>
   </div>
 </footer>
