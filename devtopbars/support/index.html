@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>devTopBars — Support</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/legal.css">
+</head>
+<body>
+  <h1>devTopBars — Support</h1>
+  <p class="eff">For devTopBars on the Mac</p>
+
+  <p>devTopBars is a Mac menu-bar app by <strong>Halfmarble LLC</strong> (“halfmarble”), built on the free
+  <a href="../../cputopbars/">cpuTopBars</a>. It shows everything cpuTopBars shows, plus bars for your AI
+  coding plan’s usage limits and each live session, your network addresses in the menu, and a way to keep
+  your Mac awake while a job runs. <a href="../">More about devTopBars</a>.</p>
+
+  <p class="lede"><strong>Need help? Email
+  <a href="mailto:support@halfmarble.com">support@halfmarble.com</a>.</strong> Include your Mac model, your
+  macOS version, the app’s build number (the number after “b” in the menu’s last item, Quit), and a short
+  description of what happened.</p>
+
+  <h2>How do I get it?</h2>
+  <p>The open beta is on TestFlight now: get Apple’s free TestFlight app from the Mac App Store, then open
+  the <a href="https://testflight.apple.com/join/1g5HtNc7">beta’s TestFlight link</a> on your Mac and
+  install it from TestFlight. devTopBars will be a paid app on the Mac App Store.</p>
+
+  <h2>The usage bars are empty</h2>
+  <p>devTopBars works with Claude Code. The usage bars need the free usage-feed plugin, installed once in
+  Claude Code. In devTopBars’ Settings, click <strong>Usage feed setup…</strong>: the window gives the line
+  to type, and shows whether devTopBars is receiving anything. In Claude Code, the line is:</p>
+  <p><code><span style="white-space: nowrap">/plugin</span> <span style="white-space: nowrap">install</span> <span style="white-space: nowrap">usage-feed</span> <span style="white-space: nowrap">--marketplace</span> <span style="white-space: nowrap">halfmarble/mods</span></code></p>
+  <p>Check too that <strong>Show usage bars</strong> is on in Settings. The limit bars show the 5-hour and
+  weekly limits of a Claude Pro or Max plan. The plugin is open source, at
+  <a href="https://github.com/halfmarble/mods">github.com/halfmarble/mods</a>.</p>
+
+  <h2>What do the session bars mean?</h2>
+  <ul>
+    <li><strong>5 · 7</strong>: how much of the plan’s 5-hour and weekly limits is used.</li>
+    <li><strong>busy</strong>: a session that is working.</li>
+    <li><strong>ask</strong>: a session waiting on your answer.</li>
+    <li><strong>idle</strong>: a session that is done and waiting for you.</li>
+    <li><strong>handoff</strong>: an idle session large enough to be handed off to a new one.</li>
+  </ul>
+  <p>Hover a bar for its summary, or open the menu for a panel with each session’s state. For a session
+  running in Terminal, click its row and its tab comes to the front.</p>
+
+  <h2>Kill did not run</h2>
+  <p>The App Sandbox does not let devTopBars stop other processes, so Kill asks Shortcuts to, through the
+  “devTopBars Kill” shortcut. If Shortcuts has no shortcut of that name, click <strong>Add Shortcut</strong>
+  when devTopBars offers it, and add it; keep only one shortcut of that name. If you declined Shortcuts’
+  permission prompt, click Kill again and allow it. Kill also needs <strong>Shortcuts &gt; Settings &gt;
+  Advanced &gt; Allow Running Scripts</strong>. You can always copy the process’s name and open Activity
+  Monitor instead.</p>
+
+  <h2>How do I see my WAN address?</h2>
+  <p>Click the WAN row in the menu. devTopBars looks the address up only when you click it, with one
+  request to ipify. The LAN and VPN rows are read on your Mac.</p>
+
+  <h2>How do I keep my Mac awake while a job runs?</h2>
+  <p>Open the process inspector for the process, such as a long build or a download, and turn on
+  <strong>Keep Mac awake while … runs</strong>. Your Mac then does not go to sleep on its own until that
+  process ends, or until you click <strong>Keeping awake for …</strong> in the menu to stop it. Closing the
+  lid or choosing Sleep still puts it to sleep.</p>
+
+  <h2>I can’t see the graph in my menu bar</h2>
+  <p>devTopBars needs macOS 27 or later. If it is running and you still cannot see it, your menu bar may
+  be full: macOS hides the items that do not fit, most often on a Mac with a camera notch. Quit another
+  menu-bar app, or hide an item you do not need, to make room.</p>
+
+  <h2>Settings, starting at login, and reading the bars</h2>
+  <p>Click the graph and choose <strong>Open devTopBars Settings...</strong> to change the settings, and turn
+  on <strong>Launch at login</strong> there to start it when you log in. <strong>How to Read the Menu
+  Bar...</strong> in the same menu explains every bar and color with drawn examples. The system bars work
+  as in cpuTopBars; its <a href="../../cputopbars/support/">support page</a> covers them.</p>
+
+  <h2>Purchases and refunds</h2>
+  <p>The TestFlight beta is free. When devTopBars is on the Mac App Store, it is bought from Apple, and
+  payments and refunds are handled by Apple, not by us. To request a refund, visit
+  <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+
+  <h2>What do I need to run it?</h2>
+  <p>A Mac running macOS 27 or later. The usage bars also need Claude Code and the free usage-feed
+  plugin.</p>
+
+  <h2>Privacy</h2>
+  <p>devTopBars collects no data about you: no accounts, no analytics, no ads, no tracking. It makes only
+  two kinds of network request, the WAN lookup and the plugin update check, and neither sends us anything.
+  Read the full <a href="../privacy/">privacy policy</a>.</p>
+
+  <hr>
+  <footer>© 2026 Halfmarble LLC. devTopBars is not affiliated with, sponsored by or endorsed by Anthropic.
+  Claude and Claude Code are trademarks of Anthropic.</footer>
+</body>
+</html>

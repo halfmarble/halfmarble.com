@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cpuTopBars — Support</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/legal.css">
+</head>
+<body>
+  <h1>cpuTopBars — Support</h1>
+  <p class="eff">For cpuTopBars on the Mac</p>
+
+  <p>cpuTopBars is a free, open-source Mac menu-bar app by <strong>Halfmarble LLC</strong> (“halfmarble”).
+  It shows a small, live graph of your Mac’s load: CPU and every core, GPU, Neural Engine, memory, disk,
+  battery and Wi-Fi. <a href="../">More about cpuTopBars</a>.</p>
+
+  <p class="lede"><strong>Need help? Email
+  <a href="mailto:support@halfmarble.com">support@halfmarble.com</a>.</strong> Include your Mac model, your
+  macOS version, the app’s build number (the number after “b” in the menu’s last item, Quit), and a short description of what
+  happened.</p>
+
+  <h2>How do I get it?</h2>
+  <p>There are two ways. The open beta is on TestFlight now: get Apple’s free TestFlight app from the Mac App
+  Store, then open the <a href="https://testflight.apple.com/join/uQMR5R8t">beta’s TestFlight link</a> on your
+  Mac and install it from TestFlight. A Mac App Store release will follow. Or build it from source: clone
+  the <a href="https://github.com/halfmarble/cpuTopBars">repository on GitHub</a>, open
+  <code>cpuTopBars.xcodeproj</code> in Xcode and choose Product &gt; Run.</p>
+
+  <h2>I can’t see the graph in my menu bar</h2>
+  <p>cpuTopBars needs macOS 27 or later. If it is running and you still cannot see it, your menu bar may be
+  full: macOS hides the items that do not fit, most often on a Mac with a camera notch. Quit another
+  menu-bar app, or hide an item you do not need, to make room.</p>
+
+  <h2>How do I read the bars?</h2>
+  <p>While <strong>Show letters under the bars</strong> is on in Settings, the wide bars have a letter under
+  them: B battery, W Wi-Fi, D disk, M memory, N Neural Engine, G GPU, C CPU, E and P the efficiency and
+  performance cores. Rest the pointer on a bar for a second and its reading
+  appears below the menu bar. Click the graph and choose <strong>How to Read the Menu Bar...</strong> for a
+  window that explains every bar and color with drawn examples.</p>
+
+  <h2>How do I change the settings?</h2>
+  <p>Click the graph and choose <strong>Open cpuTopBars Settings...</strong> to open them. There you can
+  choose 2, 5 or 10 updates a second, and switch off groups of bars such as the battery and Wi-Fi bars or
+  the GPU and Neural Engine bars.</p>
+
+  <h2>How do I start it when I log in?</h2>
+  <p>Turn on <strong>Launch at login</strong> in Settings. macOS keeps this setting itself, under Login
+  Items in System Settings; if macOS asks you to approve it, allow it there.</p>
+
+  <h2>Why don’t I see every process, or a Kill button?</h2>
+  <p>The App Store and TestFlight version runs in Apple’s App Sandbox, which limits what an app may see of
+  other processes. So it ranks your own processes and counts the others in one row, its inspector shows the
+  man page, arguments and environment, and it shows the Neural Engine as on or off and the GPU’s use. The
+  version you build from source runs outside the sandbox: it ranks every user’s processes, adds lsof, nm and
+  sample tabs and a Kill button for your own processes, and shows the Neural Engine’s busy share and the
+  GPU’s power in watts, where they can be read.</p>
+
+  <h2>I used upMonitor before</h2>
+  <p>cpuTopBars was called upMonitor. A copy you built under the old name keeps its own settings and its own
+  login item, which still opens that copy at login. Turn Launch at login off in the old copy, or delete it,
+  then set your settings and Launch at login again in cpuTopBars, which starts with the default
+  settings.</p>
+
+  <h2>How do I quit it?</h2>
+  <p>Click the graph and choose <strong>Quit</strong>, the last item in the menu. The number beside it, such
+  as “(b120)”, is the build number.</p>
+
+  <h2>How do I report a problem with the beta?</h2>
+  <p>Send feedback from the TestFlight app, or email
+  <a href="mailto:support@halfmarble.com">support@halfmarble.com</a>. Bugs in the source version can also be
+  reported as an issue on <a href="https://github.com/halfmarble/cpuTopBars">GitHub</a>.</p>
+
+  <h2>Does it cost anything?</h2>
+  <p>No. cpuTopBars is free and open source (MIT). <a href="../../devtopbars/">devTopBars</a> is the paid
+  app built on it.</p>
+
+  <h2>What do I need to run it?</h2>
+  <p>A Mac running macOS 27 or later.</p>
+
+  <h2>Privacy</h2>
+  <p>cpuTopBars makes no network requests and collects no data about you: no accounts, no analytics, no
+  ads, no tracking. Read the full <a href="../privacy/">privacy policy</a>.</p>
+
+  <hr>
+  <footer>© 2026 Halfmarble LLC</footer>
+</body>
+</html>
