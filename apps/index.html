@@ -61,6 +61,8 @@
   .status .chip { display: inline-block; padding: 3px 8px; border-radius: 5px; margin: 0 6px 6px 0; }
   .chip.now { color: #75db5c; border: 1px solid rgba(117,219,92,0.4); }
   .chip.soon { color: #cbb48c; border: 1px solid #2a2a30; }
+  a.chip { text-decoration: none; transition: border-color 0.2s; }
+  a.chip.now:hover { border-color: #75db5c; }
   .app .needs { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: #6d737a; margin: -6px 0 18px; line-height: 1.6; }
   .app .needs b { color: #8a9096; font-weight: 500; }
   .app .cta { display: block; margin-top: auto; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #d1d5db; text-decoration: none; border: 1px solid #333; border-radius: 8px; padding: 12px 16px; transition: border-color 0.2s, background 0.2s; }
@@ -217,14 +219,13 @@
       </div>
       <p>Your Mac's load at a glance: live bars in the menu bar for CPU and every core, GPU, Neural Engine, memory, disk, battery and Wi-Fi, with your top processes one click away. Read on your Mac; nothing is sent.</p>
       <div class="status">
-        <span class="chip now">Free &middot; open source (MIT)</span>
+        <a class="chip now" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Free &middot; open source (MIT) &#8599;</a>
         <span class="chip now">Open beta &middot; TestFlight</span>
         <span class="chip soon">Mac App Store release to follow</span>
       </div>
       <p class="needs">Needs <b>Mac &middot; macOS 27+</b></p>
       <a class="cta store" href="https://testflight.apple.com/join/uQMR5R8t" target="_blank" rel="noopener">Join the beta on TestFlight &#8599;</a>
       <a class="cta" href="../cputopbars/">See the app &rarr;</a>
-      <a class="cta" href="https://github.com/halfmarble/cpuTopBars" target="_blank" rel="noopener">Source on GitHub &#8599;</a>
     </div>
 
     <div class="app">
