@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>devTopBars — Privacy Policy</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/legal.css">
+</head>
+<body>
+  <h1>devTopBars — Privacy Policy</h1>
+  <p class="eff">Effective date: October 31, 2026</p>
+
+  <p>devTopBars is a Mac menu-bar app published by <strong>Halfmarble LLC</strong> (“halfmarble”, “we”,
+  “us”). This policy explains how devTopBars handles your information. It covers the version from the Mac
+  App Store and its TestFlight beta.</p>
+
+  <p class="lede"><strong>The short version: devTopBars itself collects no data about you.</strong> It
+  makes two kinds of network request, described below, and neither sends us anything. If you test a beta
+  through TestFlight, or share analytics with app developers, Apple shares some information with us, as
+  described below. There are no accounts, no sign-in, no analytics, no advertising, and no third-party
+  tracking in the app.</p>
+
+  <h2>Data we collect</h2>
+  <p><strong>None through the app.</strong> devTopBars reads its readings (CPU, GPU, Neural Engine, memory,
+  disk, battery, Wi-Fi, network addresses and your running processes) from macOS on your Mac and shows them
+  to you. It does not send them to us or to anyone. It does not track you across other apps or websites.
+  What Apple may share with us is under “TestFlight” and “Analytics shared by Apple”.</p>
+
+  <h2>Network requests</h2>
+  <p>devTopBars makes only these two requests. Like any request on the internet, each one shows the
+  server your public IP address. Each also carries the name “devTopBars” as its user agent, and the
+  standard details macOS adds to a request, which may include your preferred language. devTopBars adds
+  nothing else about you.</p>
+  <ul>
+    <li><strong>Your WAN address, when you ask for it.</strong> Only when you click the WAN IP row in the
+    menu, devTopBars sends one request to <strong>ipify</strong> (api64.ipify.org), a third-party service
+    that replies with your public IP address, which devTopBars then shows you.</li>
+    <li><strong>The usage-feed update check.</strong> Once per launch, at launch or when you switch them
+    on, while “Show usage bars” and “Check GitHub for a newer usage-feed at launch” are both on in Settings,
+    devTopBars reads the usage-feed plugin’s published version file from <strong>GitHub</strong>
+    (raw.githubusercontent.com) to tell you when a newer plugin is out. Both switches are on by default, so
+    the check runs whether or not you have installed the plugin. Turn either one off to stop it. If
+    devTopBars offers you a plugin update and you accept it, Claude Code fetches the new version from
+    GitHub.</li>
+  </ul>
+
+  <h2>Usage bars and the usage-feed plugin</h2>
+  <p>The usage bars are fed by the free usage-feed plugin, which you install yourself in Claude Code. For
+  each running session, the plugin sends devTopBars its title (which Claude Code may write from your
+  conversation), its project folder name, model, effort, context-window use, cost, session length, usage limits and state. It sends them over a
+  connection that stays on your Mac (a local socket inside devTopBars’ own app container). It sends no
+  prompt text, tool input or transcript, and devTopBars does not send any of this anywhere. Without the
+  plugin, nothing is sent to these bars.</p>
+
+  <h2>Information stored on your Mac</h2>
+  <p>Your settings and the last usage reading are stored <strong>locally on your Mac</strong> by macOS.
+  They never leave your Mac through devTopBars.</p>
+
+  <h2>Purchases</h2>
+  <p>devTopBars is a paid app. Purchases are processed entirely by <strong>Apple</strong> through the App
+  Store; devTopBars never receives your payment information.</p>
+
+  <h2>TestFlight</h2>
+  <p>If you test a beta of devTopBars through <strong>TestFlight</strong>, Apple automatically collects
+  crash logs and usage information (such as installs and sessions) and shares them with us, along with any
+  feedback you choose to send. If we invited you by email, this information can carry your name and email
+  address; if you joined through a public link, it does not. TestFlight is run by Apple under
+  <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>. We use this information only
+  to fix and improve devTopBars, and we share it with no one.</p>
+
+  <h2>Analytics shared by Apple</h2>
+  <p>If you choose, in your Mac’s settings, to share analytics with app developers, Apple may also share
+  crash and usage data from the App Store version with us. We use it in the same way and share it with
+  no one.</p>
+
+  <h2>Keeping and deleting your information</h2>
+  <p>We keep the information Apple shares with us only while we need it to fix and improve devTopBars. To
+  have yours deleted, email <strong>support@halfmarble.com</strong>: we will delete what we hold and tell
+  you about anything we cannot remove. To stop sharing, stop testing the beta in the TestFlight app, or turn
+  off sharing with app developers in System Settings, under Privacy &amp; Security, Analytics &amp;
+  Improvements. Your settings stay on your Mac; we never see them, and you can remove them yourself.</p>
+
+  <h2>Third parties</h2>
+  <p>devTopBars contains <strong>no analytics, advertising, crash-reporting, or tracking code</strong>. The
+  only third parties it contacts are ipify and GitHub, as described above, and only for those two
+  requests.</p>
+
+  <h2>Children</h2>
+  <p>devTopBars does not knowingly collect data from anyone, including children. The app itself collects no
+  personal information from children (or adults); what Apple may share with us is described above.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy from time to time. Any changes will be posted on this page with a new
+  effective date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy? Email <strong>support@halfmarble.com</strong>.</p>
+
+  <hr>
+  <footer>© 2026 Halfmarble LLC</footer>
+</body>
+</html>
